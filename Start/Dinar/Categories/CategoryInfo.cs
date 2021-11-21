@@ -19,14 +19,33 @@ namespace Start.Dinar.Categories
         public CategoryInfo Next { get; set; }
         public CategoryInfo Prev { get; set; }
 
-        public CategoryInfo(int day, int mounth, int year, int sum, string nameCat)
+        public CategoryInfo(int day, int mounth, int year, int sum, int numbCategory)
         {
             Date = $"{day}.{mounth}.{year}";
             Day = day;
             Mounth = mounth;
             Year = year;
             Sum = sum;
-            NameCategory = nameCat;
+            NameCategory = ChooseName(numbCategory);
+        }
+
+        public string ChooseName(int numbCategory)
+        {
+            string name;
+
+            if (numbCategory == 0)
+            {
+                name = "Еда";
+            }
+            else if (numbCategory == 1)
+            {
+                name = "Такси";
+            }
+            else
+            {
+                name = "Unknown category";
+            }
+            return name;
         }
     }
 }

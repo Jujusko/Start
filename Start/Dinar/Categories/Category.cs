@@ -8,41 +8,56 @@ namespace Start.Dinar.Categories
 {
     public class Category
     {
-       public CategoryInfo CurrentCategory { get; set; }
-
-        public Category(CategoryInfo Category)
+        [Flags]
+        public enum Flags
         {
-            CurrentCategory = Category;
-            CurrentCategory.Next = null;
-            CurrentCategory.Prev = null;
+            Food,
+            Taxi,
+            Home
+        }
+        public CategoryInfo[] CurrentCategory { get; set; }
+        public int Len { get; set; }
+
+        public Category(CategoryInfo Category, Flags cats)
+        {
+
+            int numbCategory;
+
+            numbCategory = ChooseCategory(cats);
+            CurrentCategory = new CategoryInfo[10];
+            CurrentCategory[numbCategory] = Category;
+            CurrentCategory[numbCategory].Next = null;
+            CurrentCategory[numbCategory].Prev = null;
         }
 
-        public void AddNewPurchase(CategoryInfo curCat)
+        public void AddNewPurchase(CategoryInfo curCat, int numbCategory)
         {
             CategoryInfo tmp;
 
-            tmp = CurrentCategory;
+            tmp = CurrentCategory[numbCategory];
             while (tmp.Next != null)
                 tmp = tmp.Next;
             tmp.Next = curCat;
             tmp.Next.Prev = tmp;
         }
-        public void AddNewPurchaseByDate(string date, int sum, string nameCat)
+        public void AddNewPurchaseByDate(string date, int sum, Flags cats)
         {
             int day;
             int mounth;
             int year;
             int flag;
+            int numbCategory;
             CategoryInfo newNode;
             CategoryInfo treatHead;
 
+            numbCategory = ChooseCategory(cats);
             day = (Convert.ToInt32(date[0]) - 48) * 10 + (Convert.ToInt32(date[1]) -48);
             mounth = (Convert.ToInt32(date[3]) - 48) * 10 + (Convert.ToInt32(date[4]) - 48);
             year = (Convert.ToInt32(date[6]) - 48) * 1000 + (Convert.ToInt32(date[7]) - 48) * 100 +
                 (Convert.ToInt32(date[8]) - 48) * 10 + (Convert.ToInt32(date[9]) - 48);
-            newNode = new(day, mounth, year, sum, nameCat);
+            newNode = new(day, mounth, year, sum, numbCategory);
 
-            CategoryInfo tmp = CurrentCategory;
+            CategoryInfo tmp = CurrentCategory[numbCategory];
             flag = 1;
             treatHead = tmp;
             while(tmp.Next != null)
@@ -60,9 +75,9 @@ namespace Start.Dinar.Categories
             {
                 if (FrontOrBack(tmp, newNode) == 0)
                 {
-                    newNode.Next = CurrentCategory;
+                    newNode.Next = CurrentCategory[numbCategory];
                     newNode.Next.Prev = newNode;
-                    CurrentCategory = newNode;
+                    CurrentCategory[numbCategory] = newNode;
                 }
                 else
                 {
@@ -71,7 +86,6 @@ namespace Start.Dinar.Categories
                 }
             }
         }
-
         private int FrontOrBack(CategoryInfo nodeToCmp, CategoryInfo toAddNode)
         {
             if (nodeToCmp.Year == toAddNode.Year)
@@ -95,11 +109,11 @@ namespace Start.Dinar.Categories
             else
                 return 0;
         }
-        public void PutToConsole()
+        public void PutToConsole(Flags op)
         {
             CategoryInfo tmp;
 
-            tmp = CurrentCategory;
+            tmp = CurrentCategory[ChooseCategory(op)];
             while (tmp != null)
             {
                 Console.WriteLine(tmp.Date);
@@ -107,6 +121,26 @@ namespace Start.Dinar.Categories
                 Console.WriteLine(tmp.NameCategory);
                 tmp = tmp.Next;
             }
+        }
+
+        private int ChooseCategory(Flags flag)
+        {
+            if (flag == Flags.Food)
+            {
+                return 0;
+            }
+            else if (flag == Flags.Taxi)
+            {
+                return 1;
+            }
+            else
+            {
+                throw new Exception("Нет категории");
+            }
+        }
+        public void NewCategory(CategoryInfo newCategory, Flags cats)
+        {
+            CurrentCategory[ChooseCategory(cats)] = newCategory;
         }
     }
 }
