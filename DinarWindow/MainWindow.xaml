@@ -9,6 +9,7 @@
     <Grid x:Name="WindowMain" Width="798" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,1,-35">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
@@ -17,16 +18,18 @@
                 <GradientStop Color="#FFB0B9B5" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox x:Name="TextBlockCategoryName" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="83,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="42"/>
-        <TextBox x:Name="TextBlockSumm" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="83,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="41"/>
-        <Button x:Name="ButtonAddData" Content="Добавить транзакцию" Grid.Column="1" HorizontalAlignment="Left" Margin="83,165,0,0" VerticalAlignment="Top" Height="31" Width="132" Click="ButtonAddData_Click"/>
-        <Button x:Name="ButtonAllBoughts" Content="Все траты" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="163,263,0,0" VerticalAlignment="Top" Height="41" Width="112" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="ButtonAllBoughts_Click"/>
-        <TextBox x:Name="TextBoxChooseCategoryToSeeAll" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="163,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="36" Text="Ввести имя категории"/>
-        <DatePicker x:Name="DateTranz" HorizontalAlignment="Left" Margin="83,53,0,0" VerticalAlignment="Top" Grid.Column="1" SelectedDateFormat="Short" DisplayDate="2021-11-28" FirstDayOfWeek="Monday" Height="24"/>
-        <TextBox x:Name="TextBoxTest" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="223,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="143"/>
-        <Label x:Name="Label1" Content="Имя категории" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label x:Name="Label1_Copy" Content="Сумма" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,124,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label x:Name="Label1_Copy1" Content="Дата " Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label Content="Все транзакции по категории" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="223,21,0,0" VerticalAlignment="Top" Width="165" Background="White"/>
+        <TextBox x:Name="TextBlockCategoryName" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="83,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="42"/>
+        <TextBox x:Name="TextBlockSumm" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="83,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="41"/>
+        <Button x:Name="ButtonAddData" Content="Добавить транзакцию" Grid.Column="1" HorizontalAlignment="Left" Margin="83,165,0,0" VerticalAlignment="Top" Height="31" Width="132" Click="ButtonAddData_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="ButtonAllBoughts" Content="Все траты" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,237,0,0" VerticalAlignment="Top" Height="41" Width="112" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="ButtonAllBoughts_Click"/>
+        <TextBox x:Name="TextBoxChooseCategoryToSeeAll" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="36" Text="Ввести имя категории"/>
+        <DatePicker x:Name="DateTranz" HorizontalAlignment="Left" Margin="83,53,0,0" VerticalAlignment="Top" Grid.Column="1" SelectedDateFormat="Short" DisplayDate="2021-11-28" FirstDayOfWeek="Monday" Height="24" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxTest" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="143"/>
+        <Label x:Name="Label1" Content="Имя категории" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
+        <Label x:Name="Label1_Copy" Content="Сумма" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,124,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
+        <Label x:Name="Label1_Copy1" Content="Дата " Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
+        <Label Content="Все транзакции по категории" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,21,0,0" VerticalAlignment="Top" Width="165" Background="White"/>
+        <StackPanel x:Name="StacPanelCategs" Grid.ColumnSpan="3" Margin="399,10,10,273" Background="White"/>
+        <Button x:Name="ButtonAddCategory" Content="Добавить новую категорию" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="399,196,0,0" VerticalAlignment="Top" Width="389" Height="61" Click="ButtonAddCategory_Click"/>
     </Grid>
 </Window>

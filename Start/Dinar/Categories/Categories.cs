@@ -36,16 +36,6 @@ namespace Start.Dinar.Categories
             Len = 0;
         }
 
-        public void AddNewPurchase(CategoryInfo curCat, int numbCategory)
-        {
-            CategoryInfo tmp;
-
-            tmp = CurrentCategory[numbCategory];
-            while (tmp.Next != null)
-                tmp = tmp.Next;
-            tmp.Next = curCat;
-            tmp.Next.Prev = tmp;
-        }//trash
         public void AddNewPurchaseByDate(string date, int sum, string category)
         {
             int day;
@@ -55,6 +45,7 @@ namespace Start.Dinar.Categories
             int numbCategory;
             CategoryInfo newNode;
             CategoryInfo treatHead;
+            DateTime today = DateTime.Now;
 
             numbCategory = ChooseCategory(category);
             (day, mounth, year) = DateInfo(date);
@@ -139,7 +130,7 @@ namespace Start.Dinar.Categories
         private int ChooseCategory(string category)
         {
             int i = 0;
-            while(i <= Len)
+            while(i < Len)
             {
                 if (CurrentCategory[i].NameCategory == category)
                     return i;
@@ -155,18 +146,29 @@ namespace Start.Dinar.Categories
         public void NewCategory(string categoryName, int sum, string date)
         {
             int day, mounth, year;
+            DateTime today = DateTime.Now;
 
-            (day, mounth, year) = DateInfo(date);
-            if (Len == 0)
-                CurrentCategory[Len] = new(day, mounth, year, sum, categoryName);
+            if (date != null)
+                (day, mounth, year) = DateInfo(date);
             else
             {
-                Len++;
+                day = today.Day;
+                mounth = today.Month;
+                year = today.Year;
+            }
+            if (Len == 0)
+            {
                 CurrentCategory[Len] = new(day, mounth, year, sum, categoryName);
+                Len++;
+            }
+            else
+            {
+                CurrentCategory[Len] = new(day, mounth, year, sum, categoryName);
+                Len++;
             }
         }
 
-        public void NewOrAdd(string categoryName, string date, int sum)
+        public int NewOrAdd(string categoryName, string date, int sum)
         {
             int i;
 
@@ -177,7 +179,7 @@ namespace Start.Dinar.Categories
                 {
                     AddNewPurchaseByDate(date, sum, categoryName);
                     i = -1;
-                    break;
+                    return 1;
                 }
                 i++;
             }
@@ -185,12 +187,19 @@ namespace Start.Dinar.Categories
             {
                 NewCategory(categoryName, sum, date);
             }
+            return 0;
         }
         private (int, int, int) DateInfo(string date)
         {
+            DateTime today = DateTime.Now;
             int[] splitString = new int[3];
             int i;
             string[] separs;
+
+            if (date == null)
+            {
+                return (today.Day, today.Month, today.Year);
+            }
             separs = date.Split('/');
             i = -1;
             while (++i < separs.Length)

@@ -11,33 +11,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Start.Dinar;
 
 namespace DinarWindow
 {
     /// <summary>
-    /// Логика взаимодействия для Categs.xaml
+    /// Логика взаимодействия для UserCreate.xaml
     /// </summary>
-    public partial class Categs : Window
+    public partial class UserCreate : Window
     {
         private MainWindow _window;
-        public Categs(MainWindow mainWindow)
+        public UserCreate(MainWindow mainWindow)
         {
-            _window = mainWindow;
             InitializeComponent();
+            _window = mainWindow;
         }
 
-        private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
+        private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            _window.CreateCategory(Convert.ToInt32((TextBoxSum.Text)),
-                TextBoxCategoryName.Text);
-            _window.IsEnabled = true;
             this.Close();
+            _window.Show();
+            _window.IsEnabled = true;
         }
 
-        private void TextBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-
+            _window.userName.UserName = TextBoxUserName.Text;
+            _window.userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
         }
     }
 }

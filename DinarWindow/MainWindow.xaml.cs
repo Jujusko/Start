@@ -21,37 +21,19 @@ namespace DinarWindow
     public partial class MainWindow : Window
     {
 
-        Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
-
+        public Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
+        public Start.User userName = new("null");
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void ButtonCategoryName_Click(object sender, RoutedEventArgs e)
-        {
-            string name;
-
-            name = TextBlockCategoryName.Text;
-        }
-
-        private void ButtonDateByString_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void ButtonAddSum_Click(object sender, RoutedEventArgs e)
-        {
-            int summ;
-
-            summ = Convert.ToInt32(TextBlockSumm.Text);
+            this.IsEnabled = false;
+            UserCreate newUser = new(this);
+            this.Hide();
+            newUser.Show();
         }
 
         private void ButtonAddData_Click(object sender, RoutedEventArgs e)
         {
-            DateTime today = DateTime.Now;
-            string dateToString;
-
-            dateToString = today.Day + "/" + today.Month + "/" + today.Year;
             if (DateTranz.SelectedDate != null)
             {
                 bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text));
@@ -59,7 +41,7 @@ namespace DinarWindow
             }
             else
             {
-                bla.NewOrAdd(TextBlockCategoryName.Text, dateToString, Convert.ToInt32(TextBlockSumm.Text));
+                bla.NewOrAdd(TextBlockCategoryName.Text, null, Convert.ToInt32(TextBlockSumm.Text));
                 TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
             }
         }
@@ -67,6 +49,35 @@ namespace DinarWindow
         private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
         {
             TextBoxTest.Text = bla.PutToConsole(TextBoxChooseCategoryToSeeAll.Text);
+        }
+
+        public void CreateCategory(int sum, string name)
+        {
+            Button tmpButton;
+
+            tmpButton = new();
+            if (bla.NewOrAdd(name, null, sum) == 0)
+            {
+                StacPanelCategs.Children.Add(tmpButton);
+                tmpButton.Content = name;
+                //tmpButton.Click += new EventHandler(tmpButton_Click());
+            }
+            else
+            {
+                
+            }
+            TextBoxTest.Text = name;
+        }
+        public void tmpButton_Click()
+        {
+
+        }
+
+        private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            Categs addCategory = new Categs(this);
+            addCategory.Show();
+            this.IsEnabled = false;
         }
         //TODO добавить список категорий
     }

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DinarWindow"
         mc:Ignorable="d"
-        Title="Categs" Height="450" Width="800">
-    <Grid x:Name="Window2">
-        <Button x:Name="ButtonAddCategory" Content="Add category" HorizontalAlignment="Left" Height="61" Margin="353,315,0,0" VerticalAlignment="Top" Width="123" Click="ButtonAddCategory_Click"/>
-        <Button x:Name="ButtonShowCategories" Content="Show categories" HorizontalAlignment="Left" Height="48" Margin="124,328,0,0" VerticalAlignment="Top" Width="127"/>
-        <TextBox x:Name="NodeContent" HorizontalAlignment="Left" Margin="204,34,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Height="85" ContextMenuOpening="TextBox_ContextMenuOpening"/>
+        Title="Categs" Height="197" Width="234">
+    <Grid x:Name="Window2" Margin="0,0,10,-6">
+        <Button x:Name="ButtonAddCategory" Content="Добавить" HorizontalAlignment="Left" Height="61" Margin="23,81,0,0" VerticalAlignment="Top" Width="190" Click="ButtonAddCategory_Click"/>
+        <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="23,27,0,0" Text="Сумма" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="49" ContextMenuOpening="TextBox_ContextMenuOpening"/>
+        <TextBox x:Name="TextBoxCategoryName" HorizontalAlignment="Left" Margin="96,27,0,0" Text="Название категории" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Height="49"/>
 
     </Grid>
 </Window>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="DinarWindow.AddByCategoryName"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DinarWindow"
+        mc:Ignorable="d"
+        Title="AddByCategoryName" Height="119" Width="260">
+    <Grid Margin="0,0,0,2">
+        <DatePicker x:Name="DatePickerTranzDay" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="117,30,0,0" Text="Сумма транзакции" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="227"/>
+
+    </Grid>
+</Window>
