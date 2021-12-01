@@ -12,6 +12,8 @@ namespace Start
             Console.WriteLine(Categs.PutToConsole("Eda"));
 			Categs.NewCategory("Taxi", 100, null);
 			Console.WriteLine(Categs.PutToConsole("Taxi"));
+
+			User aaaa = new User("Alex");
 		}
 	}
 }

@@ -24,6 +24,7 @@ namespace DinarWindow
         {
             InitializeComponent();
             _window = mainWindow;
+            ButtonAccept.IsEnabled = false;
         }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
@@ -35,8 +36,14 @@ namespace DinarWindow
 
         private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
+            int last;
+
+            last = _window.userName.Len;
             _window.userName.UserName = TextBoxUserName.Text;
             _window.userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
+            _window.TextBoxTest.Text += _window.userName.Cards[last].Name + "\n";
+            _window.TextBoxTest.Text += _window.userName.Cards[last].Balance;
+            ButtonAccept.IsEnabled = true;
         }
     }
 }

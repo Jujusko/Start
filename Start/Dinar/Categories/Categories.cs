@@ -36,7 +36,7 @@ namespace Start.Dinar.Categories
             Len = 0;
         }
 
-        public void AddNewPurchaseByDate(string date, int sum, string category)
+        public void AddNewPurchaseByDate(string date, int sum, string category, int balance)
         {
             int day;
             int mounth;
@@ -47,6 +47,8 @@ namespace Start.Dinar.Categories
             CategoryInfo treatHead;
             DateTime today = DateTime.Now;
 
+            if (balance < sum)
+                return;
             numbCategory = ChooseCategory(category);
             (day, mounth, year) = DateInfo(date);
             newNode = new(day, mounth, year, sum, category);
@@ -168,7 +170,7 @@ namespace Start.Dinar.Categories
             }
         }
 
-        public int NewOrAdd(string categoryName, string date, int sum)
+        public int NewOrAdd(string categoryName, string date, int sum, int balance)
         {
             int i;
 
@@ -177,7 +179,7 @@ namespace Start.Dinar.Categories
             {
                 if (CurrentCategory[i] != null && CurrentCategory[i].NameCategory == categoryName)
                 {
-                    AddNewPurchaseByDate(date, sum, categoryName);
+                    AddNewPurchaseByDate(date, sum, categoryName, balance);
                     i = -1;
                     return 1;
                 }

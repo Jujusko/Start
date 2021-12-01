@@ -30,7 +30,7 @@ namespace DinarWindow
         private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
         {
             _window.CreateCategory(Convert.ToInt32((TextBoxSum.Text)),
-                TextBoxCategoryName.Text);
+                TextBoxCategoryName.Text, _window.userName.Cards[0].Balance);
             _window.IsEnabled = true;
             this.Close();
         }

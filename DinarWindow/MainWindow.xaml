@@ -31,5 +31,6 @@
         <Label Content="Все транзакции по категории" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,21,0,0" VerticalAlignment="Top" Width="165" Background="White"/>
         <StackPanel x:Name="StacPanelCategs" Grid.ColumnSpan="3" Margin="399,10,10,273" Background="White"/>
         <Button x:Name="ButtonAddCategory" Content="Добавить новую категорию" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="399,196,0,0" VerticalAlignment="Top" Width="389" Height="61" Click="ButtonAddCategory_Click"/>
+        <ComboBox x:Name="ComboBoxCards" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,242,0,0" VerticalAlignment="Top" Width="120" ContextMenuOpening="ComboBoxCards_ContextMenuOpening"/>
     </Grid>
 </Window>

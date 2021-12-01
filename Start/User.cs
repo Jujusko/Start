@@ -8,11 +8,13 @@ namespace Start
 {
     public class User
     {
-        List<RealCard> Cards = new();
+        public List<RealCard> Cards = new();
         public string UserName;
+        public int Len;
 
         public User(string userName)
         {
+            Len = 0;
             UserName = userName;
         }
 
@@ -20,6 +22,7 @@ namespace Start
         {
             RealCard newCard = new(balance, cardName);
             Cards.Add(newCard);
+            Len++;
         }
         public void NewTransaction(string cardName, int sum)
         {
