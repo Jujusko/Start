@@ -26,69 +26,31 @@ namespace DinarWindow
         public MainWindow()
         {
             InitializeComponent();
-            this.IsEnabled = false;
             UserCreate newUser = new(this);
-            this.Hide();
-            newUser.Show();
-           
         }
 
-        private void ButtonAddData_Click(object sender, RoutedEventArgs e)
+        private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            if (DateTranz.SelectedDate != null)
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text), userName.Cards[0].Balance);
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text);
-            }
-            else
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, null, Convert.ToInt32(TextBlockSumm.Text), userName.Cards[0].Balance);
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
-            }
+            CategsMainWindow categs = new(this);
+            categs.Show();
+            this.Close();
         }
 
-        private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxTest.Text = bla.PutToConsole(TextBoxChooseCategoryToSeeAll.Text);
+            int last;
+
+            userName.UserName = TextBoxUserName.Text;
+            userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
+
+            //last = userName.Len;
+            //userName.UserName = TextBoxUserName.Text;
+            //userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
+            //TextBoxTest.Text += userName.Cards[last].Name + "\n";
+            //TextBoxTest.Text += userName.Cards[last].Balance;
+            //ButtonAccept.IsEnabled = true;
         }
-
-        public void CreateCategory(int sum, string name, int balance)
-        {
-            Button tmpButton;
-
-            tmpButton = new();
-            if (bla.NewOrAdd(name, null, sum, balance) == 0)
-            {
-                StacPanelCategs.Children.Add(tmpButton);
-                tmpButton.Content = name;
-                //tmpButton.Click += new EventHandler(tmpButton_Click());
-            }
-            else
-            {
-                
-            }
-            TextBoxTest.Text = name;
-        }
-        public void tmpButton_Click()
-        {
-
-        }
-
-        private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
-        {
-            Categs addCategory = new Categs(this);
-            addCategory.Show();
-            this.IsEnabled = false;
-        }
-
-        private void ComboBoxCards_ContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
-            Button newB = new();
-
-            newB.Content = "Cards";
-            ComboBoxCards.Items.Add(new Button());
-        }
-        //TODO добавить список категорий
     }
-
+    //TODO добавить список категорий
 }
+

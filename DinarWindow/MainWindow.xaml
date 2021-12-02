@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DinarWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="WindowMain" Width="798" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,1,-35">
+        Title="MainWindow" Height="359" Width="470">
+    <Grid x:Name="WindowMain" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
@@ -18,19 +18,12 @@
                 <GradientStop Color="#FFB0B9B5" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox x:Name="TextBlockCategoryName" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="83,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="42"/>
-        <TextBox x:Name="TextBlockSumm" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="83,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="41"/>
-        <Button x:Name="ButtonAddData" Content="Добавить транзакцию" Grid.Column="1" HorizontalAlignment="Left" Margin="83,165,0,0" VerticalAlignment="Top" Height="31" Width="132" Click="ButtonAddData_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="ButtonAllBoughts" Content="Все траты" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,237,0,0" VerticalAlignment="Top" Height="41" Width="112" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="ButtonAllBoughts_Click"/>
-        <TextBox x:Name="TextBoxChooseCategoryToSeeAll" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" Height="36" Text="Ввести имя категории"/>
-        <DatePicker x:Name="DateTranz" HorizontalAlignment="Left" Margin="83,53,0,0" VerticalAlignment="Top" Grid.Column="1" SelectedDateFormat="Short" DisplayDate="2021-11-28" FirstDayOfWeek="Monday" Height="24" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBoxTest" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="143"/>
-        <Label x:Name="Label1" Content="Имя категории" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label x:Name="Label1_Copy" Content="Сумма" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,124,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label x:Name="Label1_Copy1" Content="Дата " Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Background="White" Width="78" FontSize="10"/>
-        <Label Content="Все транзакции по категории" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="223,21,0,0" VerticalAlignment="Top" Width="165" Background="White"/>
-        <StackPanel x:Name="StacPanelCategs" Grid.ColumnSpan="3" Margin="399,10,10,273" Background="White"/>
-        <Button x:Name="ButtonAddCategory" Content="Добавить новую категорию" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="399,196,0,0" VerticalAlignment="Top" Width="389" Height="61" Click="ButtonAddCategory_Click"/>
-        <ComboBox x:Name="ComboBoxCards" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,242,0,0" VerticalAlignment="Top" Width="120" ContextMenuOpening="ComboBoxCards_ContextMenuOpening"/>
+        <Button x:Name="ButtonAccept" Content="Создать user" HorizontalAlignment="Left" Margin="43,290,0,0" VerticalAlignment="Top" Width="139" Click="ButtonAccept_Click" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" Margin="10,53,0,0" Text="Имя" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TextBoxCardName" HorizontalAlignment="Left" Margin="328,53,0,0" Text="Название карты" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,99,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TextBoxCardBalance" HorizontalAlignment="Left" Margin="328,76,0,0" Text="Баланс" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="TextBoxCashback" HorizontalAlignment="Left" Margin="328,99,0,0" Text="Кешбек на покупки" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Button x:Name="ButtonAddCard" Content="Добавить карту" HorizontalAlignment="Left" Margin="328,132,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAddCard_Click" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

@@ -20,8 +20,8 @@ namespace DinarWindow
     /// </summary>
     public partial class Categs : Window
     {
-        private MainWindow _window;
-        public Categs(MainWindow mainWindow)
+        private CategsMainWindow _window;
+        public Categs(CategsMainWindow mainWindow)
         {
             _window = mainWindow;
             InitializeComponent();
