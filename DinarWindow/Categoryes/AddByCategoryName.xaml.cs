@@ -19,11 +19,22 @@ namespace DinarWindow
     /// </summary>
     public partial class AddByCategoryName : Window
     {
-        private MainWindow _window;
-        public AddByCategoryName(MainWindow window)
+        private CategsMainWindow _window;
+        private int _balance;
+        private string _catName;
+        public AddByCategoryName(CategsMainWindow window, string name, int balance)
         {
             _window = window;
+            _balance = balance;
+            _catName = name;
             InitializeComponent();
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            _window.IsEnabled = true;
+            _window.CreateCategory(Convert.ToInt32(TextBoxSum.Text), _catName, _balance);
         }
     }
 }

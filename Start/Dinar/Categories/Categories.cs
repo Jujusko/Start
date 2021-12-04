@@ -36,7 +36,7 @@ namespace Start.Dinar.Categories
             Len = 0;
         }
 
-        public void AddNewPurchaseByDate(string date, int sum, string category, int balance)
+        public int AddNewPurchaseByDate(string date, int sum, string category, int balance)
         {
             int day;
             int mounth;
@@ -47,9 +47,9 @@ namespace Start.Dinar.Categories
             CategoryInfo treatHead;
             DateTime today = DateTime.Now;
 
-            if (balance < sum)
-                return;
             numbCategory = ChooseCategory(category);
+            if (balance < sum || numbCategory == -1)
+                return -1;
             (day, mounth, year) = DateInfo(date);
             newNode = new(day, mounth, year, sum, category);
 
@@ -81,6 +81,7 @@ namespace Start.Dinar.Categories
                     tmp.Next.Prev = tmp;
                 }
             }
+            return 1;
         }
         private int FrontOrBack(CategoryInfo nodeToCmp, CategoryInfo toAddNode)
         {
@@ -109,7 +110,13 @@ namespace Start.Dinar.Categories
         {
             CategoryInfo tmp;
             string str = "";
+            int index;
 
+            index = ChooseCategory(category);
+            if (index == -1)
+            {
+                return ("нет такой каты");
+            }
             tmp = CurrentCategory[ChooseCategory(category)];
             while (tmp != null)
             {
@@ -138,6 +145,7 @@ namespace Start.Dinar.Categories
                     return i;
                 i++;
             }
+            return (-1);
             throw new Exception("Нет такой категории");
         }
         public void NewCategory(CategoryInfo newCategory)
@@ -179,7 +187,8 @@ namespace Start.Dinar.Categories
             {
                 if (CurrentCategory[i] != null && CurrentCategory[i].NameCategory == categoryName)
                 {
-                    AddNewPurchaseByDate(date, sum, categoryName, balance);
+                    if (AddNewPurchaseByDate(date, sum, categoryName, balance) == -1)
+                        return -1;
                     i = -1;
                     return 1;
                 }

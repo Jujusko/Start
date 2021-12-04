@@ -36,7 +36,6 @@ namespace DinarWindow
 
         private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-            int last;
 
             //last = _window.userName.Len;
             //_window.userName.UserName = TextBoxUserName.Text;

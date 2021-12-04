@@ -9,7 +9,7 @@
     <Grid Margin="0,0,0,2">
         <DatePicker x:Name="DatePickerTranzDay" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="117,30,0,0" Text="Сумма транзакции" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="227"/>
+        <Button x:Name="ButtonAdd" Content="Button" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="227" Click="ButtonAdd_Click"/>
 
     </Grid>
 </Window>

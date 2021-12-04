@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Start.Dinar.Categories;
+using Start;
 
 namespace Start
 {
@@ -11,6 +13,7 @@ namespace Start
         public List<RealCard> Cards = new();
         public string UserName;
         public int Len;
+        public Categories bla;
 
         public User(string userName)
         {

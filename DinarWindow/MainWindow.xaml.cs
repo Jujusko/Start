@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Start.Dinar.Categories;
+using Start;
 
 namespace DinarWindow
 {
@@ -21,8 +23,8 @@ namespace DinarWindow
     public partial class MainWindow : Window
     {
 
-        public Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
-        public Start.User userName = new Start.User("null");
+        //public Categories bla = new Start.Dinar.Categories.Categories();
+        public User userName = new Start.User("null");
         public MainWindow()
         {
             InitializeComponent();
@@ -34,21 +36,15 @@ namespace DinarWindow
             CategsMainWindow categs = new(this);
             categs.Show();
             this.Close();
+            userName.bla = new();
         }
 
         private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-            int last;
 
             userName.UserName = TextBoxUserName.Text;
             userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
-
-            //last = userName.Len;
-            //userName.UserName = TextBoxUserName.Text;
-            //userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
-            //TextBoxTest.Text += userName.Cards[last].Name + "\n";
-            //TextBoxTest.Text += userName.Cards[last].Balance;
-            //ButtonAccept.IsEnabled = true;
+            
         }
     }
     //TODO добавить список категорий
