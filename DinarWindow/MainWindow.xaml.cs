@@ -33,18 +33,15 @@ namespace DinarWindow
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            CategsMainWindow categs = new(this);
-            categs.Show();
+            WindowWithTabs aaa = new(this);
+            aaa.Show();
             this.Close();
             userName.bla = new();
         }
 
         private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-
             userName.UserName = TextBoxUserName.Text;
-            userName.AddNewCard(TextBoxCardName.Text, Convert.ToInt32(TextBoxCardBalance.Text));
-            
         }
     }
     //TODO добавить список категорий

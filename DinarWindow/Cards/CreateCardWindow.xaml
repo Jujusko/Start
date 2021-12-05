@@ -1,0 +1,15 @@
+﻿<Window x:Class="DinarWindow.Cards.CreateCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DinarWindow.Cards"
+        mc:Ignorable="d"
+        Title="CreateCardWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="ButtonAddNewItem" Content="Button" HorizontalAlignment="Left" Margin="58,217,0,0" VerticalAlignment="Top" Width="136" Click="ButtonAddNewItem_Click"/>
+        <TextBox x:Name="TextBoxNameCard" HorizontalAlignment="Left" Margin="58,107,0,0" Text="имя карты" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Height="29" TextChanged="TextBoxNameCard_TextChanged"/>
+        <TextBox x:Name="TextBoxBalance" HorizontalAlignment="Left" Margin="58,141,0,0" Text="balance" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Height="29"/>
+
+    </Grid>
+</Window>

@@ -23,41 +23,27 @@ namespace DinarWindow
         private MainWindow _window;
         public CategsMainWindow(MainWindow windowUser)
         {
-
             userName = windowUser.userName;
             InitializeComponent();
+            CrunchForAdd();
+        }
+
+        private void CrunchForAdd()
+        {
+            Button tmpButton;
+
+            tmpButton = new();
+            tmpButton.Content = "Добавить";
+            tmpButton.Click += ButtonAddCategory_Click;
+            ComboBoxCategs.Items.Add(tmpButton);
         }
         private void ButtonAddData_Click(object sender, RoutedEventArgs e)
         {
             AddByCategoryName tmp = new(this, Convert.ToString(((Button)sender).Content), userName.Cards[0].Balance);
             this.IsEnabled = false;
             tmp.Show();
-            //if (DateTranz.SelectedDate != null)
-            //{
-            //    userName.bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text), userName.Cards[0].Balance);
-            //    TextBoxTest.Text = userName.bla.GetInfoAboutBought(TextBlockCategoryName.Text);
-            //}
-            //else
-            //{
-            //    if (userName.bla.NewOrAdd(TextBlockCategoryName.Text, 
-            //        null, Convert.ToInt32(TextBlockSumm.Text), userName.Cards[0].Balance) == 0)
-            //    {
-            //        Button tmpButton = new();
-            //        ComboBoxCards.Items.Add(tmpButton);
-            //        tmpButton.Content = TextBlockCategoryName.Text;
-            //        tmpButton.Click += ChildrenButton;
-            //    }
-            //    TextBoxTest.Text = userName.bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
-            //}
         }
 
-        private void ChildrenButton(object sender, RoutedEventArgs e)
-        {
-            string name;
-
-             name = Convert.ToString(((Button)sender).Content);
-           // bla.NewOrAdd(name, null, Convert.ToInt32(TextBlockSumm.Text), userName.);
-        }
         private void AddCategoryCBox(object sender, RoutedEventArgs e)
         {
 
@@ -79,7 +65,7 @@ namespace DinarWindow
             {
                 tmpButton.Content = name;
                 tmpButton.Click += ButtonAddData_Click;
-                ComboBoxCards.Items.Add(tmpButton);
+                ComboBoxCategs.Items.Add(tmpButton);
             }
             else if (res == -1)
             {
@@ -94,5 +80,12 @@ namespace DinarWindow
             addCategory.Show();
             this.IsEnabled = false;
         }
-    }
+        private void ButtonAdd_ComboBox_Click(object sender, RoutedEventArgs e)
+        {
+            if ((Button)sender == ComboBoxCategs.Items[0])
+            {
+                ((Button)sender).Click += ButtonAddCategory_Click;
+            }
+        }
+        }
 }

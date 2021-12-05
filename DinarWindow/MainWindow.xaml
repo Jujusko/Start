@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DinarWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="359" Width="470">
-    <Grid x:Name="WindowMain" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,0,-6">
+    <Grid x:Name="WindowMain" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,-352,-86">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
@@ -20,10 +20,6 @@
         </Grid.Background>
         <Button x:Name="ButtonAccept" Content="Создать user" HorizontalAlignment="Left" Margin="43,290,0,0" VerticalAlignment="Top" Width="139" Click="ButtonAccept_Click" Grid.ColumnSpan="3"/>
         <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" Margin="10,53,0,0" Text="Имя" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TextBoxCardName" HorizontalAlignment="Left" Margin="328,53,0,0" Text="Название карты" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TextBoxCardBalance" HorizontalAlignment="Left" Margin="328,76,0,0" Text="Баланс" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TextBoxCashback" HorizontalAlignment="Left" Margin="328,99,0,0" Text="Кешбек на покупки" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
-        <Button x:Name="ButtonAddCard" Content="Добавить карту" HorizontalAlignment="Left" Margin="328,132,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAddCard_Click" Grid.ColumnSpan="3"/>
         <ComboBox x:Name="ComboBoxUsers" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Или выберите" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" Height="23" Width="120">
             <Label.Background>
