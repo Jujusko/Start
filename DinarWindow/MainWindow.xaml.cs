@@ -22,28 +22,23 @@ namespace DinarWindow
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        //public Categories bla = new Start.Dinar.Categories.Categories();
-        public User userName = new Start.User("null");
+        AllData Garb = AllData.GetInstance();
+        public User userName = new User("null");
         public MainWindow()
         {
             InitializeComponent();
-            UserCreate newUser = new(this);
+            
         }
 
-        private void ButtonAccept_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
         {
-            WindowWithTabs aaa = new(this);
+            WindowWithTabs aaa = new();
+
             aaa.Show();
             this.Close();
-            userName.bla = new();
-        }
-
-        private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
-        {
-            userName.UserName = TextBoxUserName.Text;
+            Garb.user.UserName = TextBoxUserName.Text;
+            Garb.user.bla = new();
         }
     }
     //TODO добавить список категорий
 }
-

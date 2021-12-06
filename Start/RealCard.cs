@@ -12,13 +12,14 @@ namespace Start
         public override double CashBack { get ; set ; }
         public override double Deposite { get ; set; }
         public override string Name { get; set; }
+        public int Index { get; set; }
         public override double AccumulatedCashBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public RealCard(int balance, string name)
+        public RealCard(int balance, string name, int index)
         {
             Balance = balance;
             Name = name;
-
+            Index = index;
             Console.WriteLine($"You success created card {name}. Current balance is {balance}.");
         }
 

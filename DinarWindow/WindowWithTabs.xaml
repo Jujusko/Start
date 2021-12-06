@@ -10,12 +10,13 @@
         <TabControl x:Name="TabControlMain" Background="#FF0E0404">
             <TabItem x:Name="TabItemCards" Header="Счета" Margin="-2,-2,-2,2">
                 <Grid x:Name="WindowCards" Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="146*"/>
-                    </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    </Grid.ColumnDefinitions>-->
+                    <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxCards_SelectionChanged"/>
                     <Label x:Name="LabelCommon1" Content="Карты" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label x:Name="LabelCurCardBalance" Content="" HorizontalAlignment="Left" Margin="293,26,0,0" VerticalAlignment="Top" Height="29" Width="140"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemTranz" Header="Траты">
@@ -23,13 +24,17 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="9*"/>
-                        <ColumnDefinition Width="776*"/>
+                        <ColumnDefinition Width="570*"/>
+                        <ColumnDefinition Width="206*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="ButtonAllBoughts" Content="Все траты" HorizontalAlignment="Left" Margin="25,247,0,0" VerticalAlignment="Top" Height="41" Width="165" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2"/>
-                    <TextBox x:Name="TextBoxChooseCategoryToSeeAll" HorizontalAlignment="Left" Margin="25,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="36" Text="Ввести имя категории" Grid.Column="2"/>
+                    <Button x:Name="ButtonAllBoughts" Content="Все траты" HorizontalAlignment="Left" Margin="400,355,0,0" VerticalAlignment="Top" Height="41" Width="165" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" Click="ButtonAllBoughts_Click"/>
+                    <TextBox x:Name="TextBoxChooseCategoryToSeeAll" HorizontalAlignment="Left" Margin="400,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="36" Text="Ввести имя категории" Grid.Column="2"/>
                     <TextBox x:Name="TextBoxTest" HorizontalAlignment="Left" Margin="25,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Height="143" Grid.Column="2"/>
                     <Label Content="Все транзакции по категории" HorizontalAlignment="Left" Margin="25,28,0,0" VerticalAlignment="Top" Width="165" Background="White" Grid.Column="2"/>
                     <ComboBox x:Name="ComboBoxCategs" HorizontalAlignment="Left" Margin="216,213,0,0" VerticalAlignment="Top" Width="166" Grid.Column="2"/>
+                    <Label x:Name="Label2" Content="Label" HorizontalAlignment="Left" Margin="369,23,0,0" VerticalAlignment="Top" Grid.Column="2" Background="White"/>
+                    <Label x:Name="LabelCardName" Content="Текущая карта" HorizontalAlignment="Left" Margin="273,23,0,0" VerticalAlignment="Top" Grid.Column="2" Background="White" Width="91"/>
+                    <StackPanel x:Name="StacPanelAllBoughts" Grid.Column="3" Background="White"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemCreditAnd" Content="" Header="Deposit And Credit">

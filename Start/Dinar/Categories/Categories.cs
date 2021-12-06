@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Start.Dinar.Categories;
 
 namespace Start.Dinar.Categories
 {
@@ -18,18 +19,7 @@ namespace Start.Dinar.Categories
         public CategoryInfo[] CurrentCategory { get; set; }
         public int Len { get; set; }
 
-        public Categories(CategoryInfo Category, Flags cats)
-        {
-
-            int numbCategory;
-            Len = 0;
-
-            numbCategory = Len;
-            CurrentCategory = new CategoryInfo[10];
-            CurrentCategory[numbCategory] = Category;
-            CurrentCategory[numbCategory].Next = null;
-            CurrentCategory[numbCategory].Prev = null;
-        }
+        
         public Categories()
         {
             CurrentCategory = new CategoryInfo[20];
@@ -41,70 +31,66 @@ namespace Start.Dinar.Categories
             int day;
             int mounth;
             int year;
-            int flag;
             int numbCategory;
-            CategoryInfo newNode;
-            CategoryInfo treatHead;
+            CategoryInfo neededCat;
             DateTime today = DateTime.Now;
+            Tranzactions newTranz;
+            int i;
 
             numbCategory = ChooseCategory(category);
             if (balance < sum || numbCategory == -1)
                 return -1;
             (day, mounth, year) = DateInfo(date);
-            newNode = new(day, mounth, year, sum, category);
+            newTranz = new(day, mounth, year, sum);
+            neededCat = CurrentCategory[numbCategory];
+            i = -1;
+            while (++i < neededCat.Needed.Count)
+            {
 
-            CategoryInfo tmp = CurrentCategory[numbCategory];
-            flag = 1;
-            treatHead = tmp;
-            while(tmp.Next != null)
-            {
-                if (FrontOrBack(tmp.Next, newNode) == 0 && FrontOrBack(tmp, newNode) == 1)
-                {
-                    newNode.Next = tmp.Next;
-                    tmp.Next = newNode;
-                    tmp.Next.Prev = tmp;
-                    flag = 0;
-                }
-                tmp = tmp.Next;
+                if (CheckTranzPlace(newTranz, neededCat.Needed[i]) == 0)
+                    break;
             }
-            if (flag == 1)
-            {
-                if (FrontOrBack(tmp, newNode) == 0)
-                {
-                    newNode.Next = CurrentCategory[numbCategory];
-                    newNode.Next.Prev = newNode;
-                    CurrentCategory[numbCategory] = newNode;
-                }
-                else
-                {
-                    tmp.Next = newNode;
-                    tmp.Next.Prev = tmp;
-                }
-            }
+            neededCat.AddTranz(newTranz);
+            //CategoryInfo tmp = CurrentCategory[numbCategory];
+            //flag = 1;
+            //treatHead = tmp;
+            //while(tmp.Next != null)
+            //{
+            //    if (FrontOrBack(tmp.Next, newNode) == 0 && FrontOrBack(tmp, newNode) == 1)
+            //    {
+            //        newNode.Next = tmp.Next;
+            //        tmp.Next = newNode;
+            //        tmp.Next.Prev = tmp;
+            //        flag = 0;
+            //    }
+            //    tmp = tmp.Next;
+            //}
+            //if (flag == 1)
+            //{
+            //    if (FrontOrBack(tmp, newNode) == 0)
+            //    {
+            //        newNode.Next = CurrentCategory[numbCategory];
+            //        newNode.Next.Prev = newNode;
+            //        CurrentCategory[numbCategory] = newNode;
+            //    }
+            //    else
+            //    {
+            //        tmp.Next = newNode;
+            //        tmp.Next.Prev = tmp;
+            //    }
+            //}
             return 1;
         }
-        private int FrontOrBack(CategoryInfo nodeToCmp, CategoryInfo toAddNode)
+        private int CheckTranzPlace(Tranzactions toAdd, Tranzactions current)
         {
-            if (nodeToCmp.Year == toAddNode.Year)
-            {
-                if (nodeToCmp.Mounth == toAddNode.Mounth)
-                {
-                    if (nodeToCmp.Day == toAddNode.Day)
-                        return 1;
-                    else if (nodeToCmp.Day < toAddNode.Day)
-                        return 1;
-                    else
-                        return 0;
-                }
-                else if (nodeToCmp.Mounth < toAddNode.Mounth)
-                    return 1;
-                else
-                    return 0;
-            }
-            else if (nodeToCmp.Year < toAddNode.Year)
+            int toAddSum;
+            int curSum;
+
+            toAddSum = toAdd.Year * 100 + toAdd.Mounth * 100 + toAdd.Day;
+            curSum = current.Year * 100 + current.Mounth * 100 + current.Day;
+            if (toAddSum > curSum)
                 return 1;
-            else
-                return 0;
+            return 0;
         }
         public string PutToConsole(string category)
         {
@@ -112,16 +98,17 @@ namespace Start.Dinar.Categories
             string str = "";
             int index;
 
+
             index = ChooseCategory(category);
             if (index == -1)
             {
                 return ("нет такой каты");
             }
             tmp = CurrentCategory[ChooseCategory(category)];
-            while (tmp != null)
+            index = -1;
+            while (++index < tmp.Needed.Count)
             {
-                str += tmp.Date + " " + tmp.Sum + "\n";
-                tmp = tmp.Next;
+                str += tmp.Needed[index].Date + " " + tmp.Needed[index].Sum + "\n";
             }
             return str;
         }
@@ -132,7 +119,7 @@ namespace Start.Dinar.Categories
             string info;
 
             tmp = CurrentCategory[ChooseCategory(category)];
-            info = tmp.Date + "\n" + tmp.NameCategory + "\n" + tmp.Sum;
+            info = tmp.Needed[tmp.Needed.Count].Date + "\n" + tmp.NameCategory + "\n" + tmp.Needed[tmp.Needed.Count];
             return info;
         }
 
@@ -158,7 +145,7 @@ namespace Start.Dinar.Categories
             int day, mounth, year;
             DateTime today = DateTime.Now;
 
-            if (date != null)
+            if (date != null && date != "")
                 (day, mounth, year) = DateInfo(date);
             else
             {
@@ -183,6 +170,10 @@ namespace Start.Dinar.Categories
             int i;
 
             i = 0;
+            if (sum > balance)
+            {
+                return -1;
+            }
             while(i < CurrentCategory.Length)
             {
                 if (CurrentCategory[i] != null && CurrentCategory[i].NameCategory == categoryName)
@@ -207,7 +198,7 @@ namespace Start.Dinar.Categories
             int i;
             string[] separs;
 
-            if (date == null)
+            if (date == null || date == "")
             {
                 return (today.Day, today.Month, today.Year);
             }
@@ -218,7 +209,6 @@ namespace Start.Dinar.Categories
                 splitString[i] = Convert.ToInt32(separs[i]);
             }
             return (splitString[1], splitString[0], splitString[2]);
-
         }
         public string PrintCats()
         {
@@ -230,6 +220,55 @@ namespace Start.Dinar.Categories
                 i++;
             }
             return s;
+        }
+
+        public CategoryInfo GetCategory(string catName)
+        {
+            CategoryInfo[] tmp;
+            int i;
+
+            i = 0;
+            tmp = CurrentCategory;
+            while (i < tmp.Length)
+            {
+                if (tmp[i].NameCategory == catName)
+                    return tmp[i];
+                i++;
+            }
+            throw new Exception("Этого не должно произойти");
+        }
+        public void DeleteTranzaction(string catName, int sum, string date)
+        {
+            CategoryInfo tmp;
+            Tranzactions toDel = new Tranzactions(date, sum);
+            int i;
+
+            tmp = GetCategory(catName);
+            i = -1;
+            while (++i < tmp.Needed.Count)
+            {
+                if ((toDel.Date == tmp.Needed[i].Date) &&
+                    (toDel.Sum == tmp.Needed[i].Sum))
+                    tmp.Delete(i);
+            }
+        }
+        public void ChangeTranzaction(string catName, int sum, string date, int prevSum, string prevDate)
+        {
+            CategoryInfo tmp;
+            Tranzactions toChange = new Tranzactions(date, sum);
+            int i;
+
+            tmp = GetCategory(catName);
+            i = -1;
+            while (++i < tmp.Needed.Count)
+            {
+                if ((prevDate == tmp.Needed[i].Date) &&
+                    (prevSum== tmp.Needed[i].Sum))
+                {
+                    tmp.Needed[i].Date = date;
+                    tmp.Needed[i].Sum = sum;
+                }
+            }
         }
     }
 }

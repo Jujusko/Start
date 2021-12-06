@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DinarWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="359" Width="470">
-    <Grid x:Name="WindowMain" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,-352,-86">
+        Title="MainWindow" Height="264" Width="148">
+    <Grid x:Name="WindowMain" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="1,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,9 +19,8 @@
                 <GradientStop Color="#FFB0B9B5" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button x:Name="ButtonAccept" Content="Создать user" HorizontalAlignment="Left" Margin="43,290,0,0" VerticalAlignment="Top" Width="139" Click="ButtonAccept_Click" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" Margin="10,53,0,0" Text="Имя" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
-        <ComboBox x:Name="ComboBoxUsers" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" Margin="10,53,0,0" Text="Имя" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3" Height="18"/>
+        <ComboBox x:Name="ComboBoxUsers" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
         <Label Content="Или выберите" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="8,75,0,0" VerticalAlignment="Top" Height="23" Width="120">
             <Label.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -29,5 +29,6 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
+        <Button x:Name="ButtonAddUser" Content="Create" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="8,161,0,0" VerticalAlignment="Top" Width="122" Click="ButtonAddUser_Click"/>
     </Grid>
 </Window>
