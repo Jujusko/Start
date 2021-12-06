@@ -8,7 +8,7 @@ namespace Start
 {
     public abstract class AbstractCard
     {
-        public abstract double Balance { get; set; }
+        public abstract int Balance { get; set; }
         public abstract double CashBack { get; set; }//сколько %
         public abstract double Deposite { get; set; }
         public abstract double AccumulatedCashBack { get; set; }// сколько рублей за месяц накоплено

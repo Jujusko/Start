@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Start.Dinar.Categories;
+using Start;
 
 namespace DinarWindow
 {
@@ -21,54 +23,27 @@ namespace DinarWindow
     public partial class MainWindow : Window
     {
 
-        Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
-
+        //public Categories bla = new Start.Dinar.Categories.Categories();
+        public User userName = new Start.User("null");
         public MainWindow()
         {
             InitializeComponent();
+            UserCreate newUser = new(this);
         }
 
-        private void ButtonCategoryName_Click(object sender, RoutedEventArgs e)
+        private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            string name;
-
-            name = TextBlockCategoryName.Text;
+            WindowWithTabs aaa = new(this);
+            aaa.Show();
+            this.Close();
+            userName.bla = new();
         }
 
-        private void ButtonDateByString_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
+            userName.UserName = TextBoxUserName.Text;
         }
-
-        private void ButtonAddSum_Click(object sender, RoutedEventArgs e)
-        {
-            int summ;
-
-            summ = Convert.ToInt32(TextBlockSumm.Text);
-        }
-
-        private void ButtonAddData_Click(object sender, RoutedEventArgs e)
-        {
-            DateTime today = DateTime.Now;
-            string dateToString;
-
-            dateToString = today.Day + "/" + today.Month + "/" + today.Year;
-            if (DateTranz.SelectedDate != null)
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text));
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text);
-            }
-            else
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, dateToString, Convert.ToInt32(TextBlockSumm.Text));
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
-            }
-        }
-
-        private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
-        {
-            TextBoxTest.Text = bla.PutToConsole(TextBoxChooseCategoryToSeeAll.Text);
-        }
-        //TODO добавить список категорий
     }
-
+    //TODO добавить список категорий
 }
+
