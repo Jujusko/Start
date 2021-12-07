@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Contributions
 {
     public abstract class AbstractionContribution
@@ -17,6 +18,7 @@ namespace Contributions
         public void WriteName()
         {
             Console.WriteLine(Name);
+
         }
         public void WriteSumm()
         {
@@ -34,6 +36,6 @@ namespace Contributions
         {
             Console.WriteLine(Procent);
         }
-
+        //return string
     }
 }

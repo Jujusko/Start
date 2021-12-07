@@ -18,57 +18,56 @@ namespace DinarWindow
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    //public partial class MainWindow : Window
+    //{
 
-        Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
+    //    Start.Dinar.Categories.Categories bla = new Start.Dinar.Categories.Categories();
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+    //    public MainWindow()
+    //    {
+    //        InitializeComponent();
+    //    }
 
-        private void ButtonCategoryName_Click(object sender, RoutedEventArgs e)
-        {
-            string name;
+    //    private void ButtonCategoryName_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        string name;
 
-            name = TextBlockCategoryName.Text;
-        }
+    //        name = TextBlockCategoryName.Text;
+    //    }
 
-        private void ButtonDateByString_Click(object sender, RoutedEventArgs e)
-        {
-        }
+    //    private void ButtonDateByString_Click(object sender, RoutedEventArgs e)
+    //    {
+    //    }
 
-        private void ButtonAddSum_Click(object sender, RoutedEventArgs e)
-        {
-            int summ;
+    //    private void ButtonAddSum_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        int summ;
 
-            summ = Convert.ToInt32(TextBlockSumm.Text);
-        }
+    //        summ = Convert.ToInt32(TextBlockSumm.Text);
+    //    }
 
-        private void ButtonAddData_Click(object sender, RoutedEventArgs e)
-        {
-            DateTime today = DateTime.Now;
-            string dateToString;
+    //    private void ButtonAddData_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        DateTime today = DateTime.Now;
+    //        string dateToString;
 
-            dateToString = today.Day + "/" + today.Month + "/" + today.Year;
-            if (DateTranz.SelectedDate != null)
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text));
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text);
-            }
-            else
-            {
-                bla.NewOrAdd(TextBlockCategoryName.Text, dateToString, Convert.ToInt32(TextBlockSumm.Text));
-                TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
-            }
-        }
+    //        dateToString = today.Day + "/" + today.Month + "/" + today.Year;
+    //        if (DateTranz.SelectedDate != null)
+    //        {
+    //            bla.NewOrAdd(TextBlockCategoryName.Text, DateTranz.Text, Convert.ToInt32(TextBlockSumm.Text));
+    //            TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text);
+    //        }
+    //        else
+    //        {
+    //            bla.NewOrAdd(TextBlockCategoryName.Text, dateToString, Convert.ToInt32(TextBlockSumm.Text));
+    //            TextBoxTest.Text = bla.GetInfoAboutBought(TextBlockCategoryName.Text) + "\n";
+    //        }
+    //    }
 
-        private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
-        {
-            TextBoxTest.Text = bla.PutToConsole(TextBoxChooseCategoryToSeeAll.Text);
-        }
-        //TODO добавить список категорий
+    //    private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        TextBoxTest.Text = bla.PutToConsole(TextBoxChooseCategoryToSeeAll.Text);
+    //    }
+    //    //TODO добавить список категорий
     }
 
-}

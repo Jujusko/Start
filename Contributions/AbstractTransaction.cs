@@ -12,6 +12,7 @@ namespace Contributions
         public abstract string Name { get; set; }
         public abstract double SummPlus { get; set; }
         public abstract double SummMinus { get; set; }
+
         public void WriteDate()
         {
             Console.WriteLine(Date);
@@ -28,6 +29,6 @@ namespace Contributions
         {
             Console.WriteLine(SummMinus);
         }
-
+        //return string
     }
 }

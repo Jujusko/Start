@@ -20,6 +20,7 @@ namespace Contributions
     /// </summary>
     public partial class MainWindow : Window
     {
+        ExampleContribution exCont;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,11 +29,11 @@ namespace Contributions
         private void PlusContribution_Click(object sender, RoutedEventArgs e)
         {
             double summ = Convert.ToDouble(Summ.Text);
-            double srok = Convert.ToDouble(Srok.Text);
+            double srok = Convert.ToDouble(TextBoxSrok.Text);
             double procent = Convert.ToDouble(Procent.Text);
-
+            exCont = new(Name.Text, summ, Convert.ToString(DatePickerDate.SelectedDate), Convert.ToDouble(TextBoxSrok.Text), Convert.ToDouble(Procent.Text));
             // Ввод исходных данных в окно вкладов
-            Contributions.Text = Date.Text + " " + Name.Text + " " + Summ.Text + "руб " + Srok.Text + "мес " + Procent.Text + "% " + Environment.NewLine;
+            Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine;
 
         }
 
@@ -63,6 +64,7 @@ namespace Contributions
             SummToPopolnenie.Visibility = Visibility.Visible;
             LabelSummSnyatia.Visibility = Visibility.Visible;
             SummToSnyatie.Visibility = Visibility.Visible;
+
         }
 
     }

@@ -29,7 +29,7 @@
         <Label x:Name="LabelSummSnyatia" Content="Сумма снятия" HorizontalAlignment="Left" Height="28" Margin="307,310,0,0" VerticalAlignment="Top" Width="86" Visibility="Hidden"/>
         <TextBox x:Name="Name" HorizontalAlignment="Left" Height="21" Margin="226,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
         <TextBox x:Name="Summ" HorizontalAlignment="Left" Height="23" Margin="226,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFC3C3C3" TextAlignment="Right" Background="White" BorderBrush="#FFABADB3"/>
-        <TextBox x:Name="Srok" HorizontalAlignment="Left" Height="23" Margin="226,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFABADB3">
+        <TextBox x:Name="TextBoxSrok" HorizontalAlignment="Left" Height="23" Margin="226,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFABADB3">
         </TextBox>
         <TextBox x:Name="Procent" HorizontalAlignment="Left" Height="22" Margin="226,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" Background="White" BorderBrush="#FFABADB3"/>
         <TextBox x:Name="SummToSnyatie" HorizontalAlignment="Left" Height="24" Margin="272,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF888888" TextAlignment="Right" Visibility="Hidden"/>
@@ -43,9 +43,9 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <DatePicker x:Name="Date" HorizontalAlignment="Left" Height="24" Margin="226,151,0,0" VerticalAlignment="Top" Width="146" Foreground="#FFB4B0B0" RenderTransformOrigin="-0.836,0.441"/>
-        <TextBox x:Name="Contributions" HorizontalAlignment="Left" Height="101" Margin="42,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330"/>
-        <ScrollBar HorizontalAlignment="Left" Height="97" Margin="352,291,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.5,0.5">
+        <DatePicker x:Name="DatePickerDate" HorizontalAlignment="Left" Height="24" Margin="226,151,0,0" VerticalAlignment="Top" Width="146" Foreground="#FFB4B0B0" RenderTransformOrigin="-0.836,0.441"/>
+        <TextBox x:Name="Contributions" HorizontalAlignment="Left" Height="101" Margin="10,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330"/>
+        <ScrollBar HorizontalAlignment="Left" Height="97" Margin="340,302,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.5,0.5">
             <ScrollBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -55,14 +55,14 @@
                 </TransformGroup>
             </ScrollBar.RenderTransform>
         </ScrollBar>
-        <Label Content="Вклады" HorizontalAlignment="Left" Height="26" Margin="42,257,0,0" VerticalAlignment="Top" Width="149"/>
-        <TextBox x:Name="Transaktions" HorizontalAlignment="Left" Height="104" Margin="411,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330"/>
-        <Label Content="Транзакции" HorizontalAlignment="Left" Height="28" Margin="434,257,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.462,2.58"/>
-        <ScrollBar HorizontalAlignment="Left" Height="104" Margin="721,285,0,0" VerticalAlignment="Top" Width="20"/>
+        <Label Content="Вклады" HorizontalAlignment="Left" Height="26" Margin="19,272,0,0" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="Transaktions" HorizontalAlignment="Left" Height="104" Margin="391,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330"/>
+        <Label Content="Транзакции" HorizontalAlignment="Left" Height="28" Margin="412,273,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.462,2.58"/>
+        <ScrollBar HorizontalAlignment="Left" Height="104" Margin="759,192,0,0" VerticalAlignment="Top" Width="20"/>
         <Button x:Name="GetTransaktion" Content="Добавить транзакцию" HorizontalAlignment="Left" Height="25" Margin="582,179,0,0" VerticalAlignment="Top" Width="158" Click="GetTransaktion_Click"/>
         <Label Content="Введите название вклада" HorizontalAlignment="Left" Margin="595,15,0,0" VerticalAlignment="Top" Height="31"/>
         <TextBox x:Name="NameContribution" HorizontalAlignment="Left" Height="20" Margin="614,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-        <DatePicker x:Name="DateTransaktion" HorizontalAlignment="Left" Height="25" Margin="415,179,0,0" VerticalAlignment="Top" Width="115"/>
+        <DatePicker x:Name="DateTransaktion" HorizontalAlignment="Left" Height="25" Margin="414,216,0,0" VerticalAlignment="Top" Width="115"/>
         <Button Content="Удалить транзакцию" HorizontalAlignment="Left" Height="24" Margin="583,217,0,0" VerticalAlignment="Top" Width="157"/>
 
 
