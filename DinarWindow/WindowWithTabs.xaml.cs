@@ -117,7 +117,7 @@ namespace DinarWindow
             int i;
             CategoryInfo neededCat;
 
-            str = TextBoxChooseCategoryToSeeAll.Text;
+            str = Convert.ToString(ComboBoxCategs.SelectedItem);
             neededCat = Garbage.user.bla.GetCategory(str);
             i = 0;
             if (StacPanelAllBoughts.Children.Count > 0)

@@ -229,7 +229,7 @@ namespace Start.Dinar.Categories
 
             i = 0;
             tmp = CurrentCategory;
-            while (i < tmp.Length)
+            while (i < tmp.Length && tmp[i] != null)
             {
                 if (tmp[i].NameCategory == catName)
                     return tmp[i];
