@@ -10,35 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Start.Dinar.Categories;
 using Start;
 
 namespace DinarWindow
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для CreateCard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateCard : Window
     {
+        private MainWindow _window;
         AllData Garb = AllData.GetInstance();
-        public User userName = new User("null");
-        public MainWindow()
+        public CreateCard(MainWindow window)
         {
+            _window = window;
             InitializeComponent();
-            
         }
 
-        private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
+        private void ButtonCreateCard_Click(object sender, RoutedEventArgs e)
         {
-            WindowWithTabs aaa = new();
-
-            aaa.Show();
-            this.Close();
-            Garb.user.UserName = TextBoxUserName.Text;
-            Garb.user.bla = new();
+            RealCard tmp = new(Convert.ToInt32(TextBoxBalance.Text), TextBoxCardName.Text, Garb.user.Cards.Count);
+            _window.userName.Cards.Add(tmp);
         }
     }
-    //TODO добавить список категорий
 }

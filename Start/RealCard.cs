@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace Start
 {
-    class RealCard:AbstractCard
+    public class RealCard:AbstractCard
     {
-        public override double Balance { get; set ; }
+        public override int Balance { get; set ; }
         public override double CashBack { get ; set ; }
         public override double Deposite { get ; set; }
-        public override string Name 
-        {
-            get; set;
-        }
+        public override string Name { get; set; }
+        public int Index { get; set; }
         public override double AccumulatedCashBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public RealCard(double balance, string name)
+        public RealCard(int balance, string name, int index)
         {
             Balance = balance;
             Name = name;
-
+            Index = index;
             Console.WriteLine($"You success created card {name}. Current balance is {balance}.");
         }
 
@@ -32,7 +30,8 @@ namespace Start
 
         public override void ChangeBalance(int money)
         {
-            throw new NotImplementedException();//Руслан на реализацию
+            Balance -=money;
+            //throw new NotImplementedException();//Руслан на реализацию
         }
 
         public override void CheckCashBack()

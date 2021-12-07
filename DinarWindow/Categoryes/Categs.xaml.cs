@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Start.Dinar;
+using Start;
 
 namespace DinarWindow
 {
@@ -20,16 +21,24 @@ namespace DinarWindow
     /// </summary>
     public partial class Categs : Window
     {
-        public Categs()
+        private WindowWithTabs _awin;
+        public AllData Garb = AllData.GetInstance();
+
+
+        public Categs(WindowWithTabs mainWindow)
         {
+            _awin = mainWindow;
             InitializeComponent();
         }
-
         private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
         {
-            Start.Dinar.Categories.Categories cats = new();
-            //cats.NewCategory("Еда", 300, DateT);
-            NodeContent.Text = "qweqweqweqwe";
+            string date;
+
+            date = DatePickerTranzDay.Text;
+            RealCard tmp = Garb.user.GetActualCard(Convert.ToString(_awin.Label2.Content));
+            _awin.CreateCategory(Convert.ToInt32((TextBoxSum.Text)), TextBoxCategoryName.Text, tmp.Balance, date);
+            _awin.IsEnabled = true;
+            this.Close();
         }
 
         private void TextBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
