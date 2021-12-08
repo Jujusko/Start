@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Start;
 
 namespace DinarWindow
 {
@@ -20,6 +21,7 @@ namespace DinarWindow
     public partial class CreateCard : Window
     {
         private MainWindow _window;
+        AllData Garb = AllData.GetInstance();
         public CreateCard(MainWindow window)
         {
             _window = window;
@@ -28,10 +30,8 @@ namespace DinarWindow
 
         private void ButtonCreateCard_Click(object sender, RoutedEventArgs e)
         {
-            Start.RealCard tmp = new(Convert.ToInt32(TextBoxBalance.Text), TextBoxCardName.Text);
+            RealCard tmp = new(Convert.ToInt32(TextBoxBalance.Text), TextBoxCardName.Text, Garb.user.Cards.Count);
             _window.userName.Cards.Add(tmp);
-           // _window.ComboBox
-            //_window.ComboBox
         }
     }
 }

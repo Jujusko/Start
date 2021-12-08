@@ -19,17 +19,10 @@ namespace DinarWindow
     /// </summary>
     public partial class AddByCategoryName : Window
     {
-        private CategsMainWindow _window;
         private WindowWithTabs _wwindow;
         private int _balance;
         private string _catName;
-        public AddByCategoryName(CategsMainWindow window, string name, int balance)
-        {
-            _window = window;
-            _balance = balance;
-            _catName = name;
-            InitializeComponent();
-        }
+
         public AddByCategoryName(WindowWithTabs window, string name, int balance)
         {
             _wwindow = window;
@@ -39,9 +32,13 @@ namespace DinarWindow
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            string date;
+
+            date = DatePickerTranzDay.Text;
+
             this.Close();
-            _window.IsEnabled = true;
-            _window.CreateCategory(Convert.ToInt32(TextBoxSum.Text), _catName, _balance);
+            _wwindow.IsEnabled = true;
+            _wwindow.CreateCategory(Convert.ToInt32(TextBoxSum.Text), _catName, _balance, date);
         }
     }
 }

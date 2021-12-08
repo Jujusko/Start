@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Start;
 
 namespace DinarWindow.Cards
 {
@@ -21,10 +22,10 @@ namespace DinarWindow.Cards
     {
         private MainWindow _window;
         private WindowWithTabs _a;
+        public AllData Garbage = AllData.GetInstance();
 
-        public CreateCardWindow(MainWindow window, WindowWithTabs a)
+        public CreateCardWindow( WindowWithTabs a)
         {
-            _window = window;
             _a = a;
             InitializeComponent();
         }

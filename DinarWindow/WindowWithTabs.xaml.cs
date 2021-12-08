@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DinarWindow.Cards;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Start;
+using Start.Dinar.Categories;
 
 namespace DinarWindow
 {
@@ -20,10 +22,10 @@ namespace DinarWindow
     /// </summary>
     public partial class WindowWithTabs : Window
     {
-        public MainWindow _window;
-        public WindowWithTabs(MainWindow window)
+        public AllData Garbage = AllData.GetInstance();
+        public RealCard current_card;
+        public WindowWithTabs()
         {
-            _window = window;
             InitializeComponent();
             CrunchForAddCard();
             CrunchForAddCategs();
@@ -55,36 +57,38 @@ namespace DinarWindow
         }
         private void ButtonAddData_Click(object sender, RoutedEventArgs e)
         {
-            AddByCategoryName tmp = new(this, Convert.ToString(((Button)sender).Content), _window.userName.Cards[0].Balance);
+            RealCard tmpCard;
+
+            tmpCard = Garbage.user.GetActualCard(Convert.ToString(Label2.Content));
+            AddByCategoryName tmp = new(this, Convert.ToString(((Button)sender).Content), tmpCard.Balance);
             this.IsEnabled = false;
             tmp.Show();
         }
 
 
-        public void CreateCategory(int sum, string name, int balance)
+        public void CreateCategory(int sum, string name, int balance, string date)
         {
             Button tmpButton;
             int res;
-
+            current_card = Garbage.user.GetActualCard(Convert.ToString(Label2.Content));
 
             tmpButton = new();
-            res = _window.userName.bla.NewOrAdd(name, null, sum, balance);
+            res = Garbage.user.bla.NewOrAdd(name, date, sum, balance);
             if (res == 0)
             {
+                current_card.Balance -= sum;
                 tmpButton.Content = name;
                 tmpButton.Click += ButtonAddData_Click;
                 ComboBoxCategs.Items.Add(tmpButton);
             }
             else if (res == -1)
-            {
                 return;
-            }
             TextBoxTest.Text = name;
         }
 
         private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
-            CreateCardWindow add = new CreateCardWindow(_window, this);
+            CreateCardWindow add = new CreateCardWindow(this);
             add.Show();
             this.IsEnabled = false;
         }
@@ -94,8 +98,57 @@ namespace DinarWindow
             Label tmp = new();
 
             tmp.Content = cardName;
-            _window.userName.AddNewCard(cardName, balance);
+            Garbage.user.AddNewCard(cardName, balance);
             ComboBoxCards.Items.Add(tmp);
+        }
+
+        private void ComboBoxCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RealCard tmp;
+
+            Label2.Content = ((Label)ComboBoxCards.SelectedItem).Content;
+            tmp = Garbage.user.GetActualCard(Convert.ToString(Label2.Content));
+            LabelCurCardBalance.Content = tmp.Balance;
+        }
+
+        private void ButtonAllBoughts_Click(object sender, RoutedEventArgs e)
+        {
+            string str;
+            int i;
+            CategoryInfo neededCat;
+
+            str = Convert.ToString(ComboBoxCategs.SelectedItem);
+            neededCat = Garbage.user.bla.GetCategory(str);
+            i = 0;
+            if (StacPanelAllBoughts.Children.Count > 0)
+            {
+                StacPanelAllBoughts.Children.RemoveAt(StacPanelAllBoughts.Children.Count - 1);
+            }
+            while (i < neededCat.Needed.Count)
+            {
+                Button createdBut = new();
+                StacPanelAllBoughts.Children.Add(createdBut);
+                createdBut.Content = neededCat.Needed[i].Date + "\n" + neededCat.Needed[i].Sum;
+                createdBut.Click += ButtonBoughtInfo;
+                i++;
+            }
+        }
+        private void ButtonBoughtInfo(object sender, RoutedEventArgs e)
+        {
+            string[] splt;
+            splt = Convert.ToString(((Button)sender).Content).Split("\n");
+            CorrectConcreteBought tmp = new CorrectConcreteBought(Convert.ToInt32(splt[1]), splt[0], this);
+            tmp.Show();
+            this.IsEnabled = false;
+
+        }
+        public void ChangeTranzaction(string catName, int sum, string date, int flag, int prevSum, string prevDate)
+        {
+            if (flag == 1)
+                Garbage.user.bla.ChangeTranzaction(catName, sum, date, prevSum, prevDate);
+            else
+                Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate);
+            this.IsEnabled = true;
         }
     }
 }

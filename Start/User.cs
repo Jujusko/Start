@@ -13,7 +13,7 @@ namespace Start
         public List<RealCard> Cards = new();
         public string UserName;
         public int Len;
-        public Categories bla;
+        public Categories bla = new();
 
         public User(string userName)
         {
@@ -23,7 +23,7 @@ namespace Start
 
         public void AddNewCard(string cardName, int balance)
         {
-            RealCard newCard = new(balance, cardName);
+            RealCard newCard = new(balance, cardName, Cards.Count);
             Cards.Add(newCard);
             Len++;
         }
@@ -41,6 +41,20 @@ namespace Start
                 }
             }
             throw new Exception("Нет такой карты");
+        }
+
+        public RealCard GetActualCard(string cardName)
+        {
+            int i;
+
+            i = 0;
+            while (i < Cards.Count)
+            {
+                if (Cards[i].Name == cardName)
+                    return Cards[i];
+                i++;
+            }
+            throw new Exception("Этого никогда не произойдет");
         }
     }
     //добавить изменеине по дате начиная от года 
