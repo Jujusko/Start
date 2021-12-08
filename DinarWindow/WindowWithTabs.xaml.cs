@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Start;
 using Start.Dinar.Categories;
+using Contributions;
 
 namespace DinarWindow
 {
@@ -151,5 +152,31 @@ namespace DinarWindow
             this.IsEnabled = true;
         }
 
+        Contribution exCont;
+        private void PlusContribution_Click(object sender, RoutedEventArgs e)
+        {
+            double summ = Convert.ToDouble(Summ.Text);
+            double srok = Convert.ToDouble(TextBoxSrok.Text);
+            double procent = Convert.ToDouble(Procent.Text);
+            exCont = new(Name.Text, summ, Convert.ToString(DatePickerDate.SelectedDate), Convert.ToInt32(TextBoxSrok.Text), Convert.ToDouble(Procent.Text));
+            // Ввод исходных данных в окно вкладов
+            Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine;
+
+        }
+
+        private void GetTransaktion_Click(object sender, RoutedEventArgs e)
+        {
+            // Вычисление выражения
+
+            // Ввод исходных данных в окно транзакций
+            if (ContributionWithReplenishment.IsChecked == true)
+            {
+                Transaktions.Text = DateTransaktion.Text + " " + NameContribution.Text + " " + " " + "+" + SummToPopolnenie.Text + "руб " + Environment.NewLine;
+            }
+            else
+            {
+                Transaktions.Text = DateTransaktion.Text + " " + NameContribution.Text + " " + "+" + SummToPopolnenie.Text + "руб " + "-" + SummToSnyatie.Text + "руб " + Environment.NewLine;
+            }
+        }
     }
 }

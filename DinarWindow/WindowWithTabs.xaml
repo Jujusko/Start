@@ -10,13 +10,18 @@
         <TabControl x:Name="TabControlMain" Background="White">
             <TabItem x:Name="TabItemCards" Header="Счета" Margin="0,-2,-2,2" HorizontalAlignment="Right" Width="48">
                 <Grid x:Name="WindowCards" Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="105*"/>
+                        <ColumnDefinition Width="672*"/>
+                    </Grid.ColumnDefinitions>
                     <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="146*"/>
                     </Grid.ColumnDefinitions>-->
-                    <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxCards_SelectionChanged"/>
-                    <Label x:Name="LabelCommon1" Content="Карты" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-                    <Label x:Name="LabelCurCardBalance" Content="" HorizontalAlignment="Left" Margin="293,26,0,0" VerticalAlignment="Top" Height="29" Width="140"/>
+                    <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxCards_SelectionChanged" Grid.Column="1"/>
+                    <Label x:Name="LabelCommon1" Content="Карты" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="LabelCurCardBalance" Content="" HorizontalAlignment="Left" Margin="171,26,0,0" VerticalAlignment="Top" Height="29" Width="140" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemTranz" Header="Траты">
@@ -37,7 +42,7 @@
                     <StackPanel x:Name="StacPanelAllBoughts" Grid.Column="3" Background="White"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemCards_Copy" Header="Вклады" Margin="2,-2,0,2" HorizontalAlignment="Left" Width="48">
+            <TabItem x:Name="TabItemCards_Copy" Header="Вклады" Margin="2,-2,0,2" HorizontalAlignment="Left" Width="61">
                 <Grid Background="#FFE5E5E5" Margin="-1,0,1,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="75*"/>
@@ -58,17 +63,17 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <RadioButton x:Name="ContributionWithReplenishment" Content="Вклад на пополнение" HorizontalAlignment="Left" Margin="339,51,0,0" VerticalAlignment="Top" Height="20" Width="226" Checked="ContributionWithReplenishment_Checked" Grid.Column="1"/>
-                    <RadioButton x:Name="ContributionWithReplenishmentAndWithdrawal" Content="Вклад на пополнение и снятие" HorizontalAlignment="Left" Margin="339,71,0,0" VerticalAlignment="Top" Height="19" Width="202" Checked="ContributionWithReplenishmentAndWithdrawal_Checked" Grid.Column="1"/>
-                    <Label x:Name="LabelSumm" Content="Сумма пополнения" HorizontalAlignment="Left" Height="28" Margin="40,310,0,0" VerticalAlignment="Top" Width="228" Visibility="Hidden" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="SummToPopolnenie" HorizontalAlignment="Left" Height="24" Margin="44,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF858585" TextAlignment="Right" Visibility="Hidden" Grid.ColumnSpan="2"/>
-                    <Label x:Name="LabelSummSnyatia" Content="Сумма снятия" HorizontalAlignment="Left" Height="28" Margin="232,310,0,0" VerticalAlignment="Top" Width="86" Visibility="Hidden" Grid.Column="1"/>
+                    <RadioButton x:Name="ContributionWithReplenishment" Content="Вклад на пополнение" HorizontalAlignment="Left" Margin="339,51,0,0" VerticalAlignment="Top" Height="20" Width="226" Grid.Column="1"/>
+                    <RadioButton x:Name="ContributionWithReplenishmentAndWithdrawal" Content="Вклад на пополнение и снятие" HorizontalAlignment="Left" Margin="339,71,0,0" VerticalAlignment="Top" Height="19" Width="202" Grid.Column="1"/>
+                    <Label x:Name="LabelSumm" Content="Сумма пополнения" HorizontalAlignment="Left" Height="28" Margin="341,105,0,0" VerticalAlignment="Top" Width="125" Visibility="Visible" Grid.Column="1"/>
+                    <TextBox x:Name="SummToPopolnenie" HorizontalAlignment="Left" Height="24" Margin="343,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF858585" TextAlignment="Right" Visibility="Visible" Grid.Column="1"/>
+                    <Label x:Name="LabelSummSnyatia" Content="Сумма снятия" HorizontalAlignment="Left" Height="28" Margin="521,104,0,0" VerticalAlignment="Top" Width="86" Visibility="Visible" Grid.Column="1"/>
                     <TextBox x:Name="Name" HorizontalAlignment="Left" Height="21" Margin="151,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
                     <TextBox x:Name="Summ" HorizontalAlignment="Left" Height="23" Margin="151,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFC3C3C3" TextAlignment="Right" Background="White" BorderBrush="#FFABADB3" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxSrok" HorizontalAlignment="Left" Height="23" Margin="151,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFABADB3" Grid.Column="1">
                     </TextBox>
                     <TextBox x:Name="Procent" HorizontalAlignment="Left" Height="22" Margin="151,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" Background="White" BorderBrush="#FFABADB3" Grid.Column="1"/>
-                    <TextBox x:Name="SummToSnyatie" HorizontalAlignment="Left" Height="24" Margin="197,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF888888" TextAlignment="Right" Visibility="Hidden" Grid.Column="1"/>
+                    <TextBox x:Name="SummToSnyatie" HorizontalAlignment="Left" Height="24" Margin="525,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF888888" TextAlignment="Right" Visibility="Visible" Grid.Column="1"/>
                     <Button x:Name="PlusContribution" Content="Добавить вклад" HorizontalAlignment="Left" Height="24" Margin="46,185,0,0" VerticalAlignment="Top" Width="160" Click="PlusContribution_Click" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
                         <Button.RenderTransform>
                             <TransformGroup>
@@ -80,10 +85,10 @@
                         </Button.RenderTransform>
                     </Button>
                     <DatePicker x:Name="DatePickerDate" HorizontalAlignment="Left" Height="24" Margin="151,151,0,0" VerticalAlignment="Top" Width="146" Foreground="#FFB4B0B0" RenderTransformOrigin="-0.836,0.441" Grid.Column="1"/>
-                    <TextBox x:Name="Contributions" HorizontalAlignment="Left" Height="101" Margin="10,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2"/>
-                    <Label Content="Вклады" HorizontalAlignment="Left" Height="26" Margin="19,272,0,0" VerticalAlignment="Top" Width="149" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="Transaktions" HorizontalAlignment="Left" Height="104" Margin="335,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" Grid.Column="1"/>
-                    <Label Content="Транзакции" HorizontalAlignment="Left" Height="28" Margin="335,265,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.462,2.58" Grid.Column="1"/>
+                    <TextBox x:Name="Contributions" HorizontalAlignment="Left" Height="101" Margin="38,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="2"/>
+                    <Label Content="Вклады" HorizontalAlignment="Left" Height="26" Margin="35,250,0,0" VerticalAlignment="Top" Width="149" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="Transaktions" HorizontalAlignment="Left" Height="104" Margin="335,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" Grid.Column="1"/>
+                    <Label Content="Транзакции" HorizontalAlignment="Left" Height="28" Margin="335,249,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.462,2.58" Grid.Column="1"/>
                     <Button x:Name="GetTransaktion" Content="Добавить транзакцию" HorizontalAlignment="Left" Height="25" Margin="507,179,0,0" VerticalAlignment="Top" Width="158" Click="GetTransaktion_Click" Grid.Column="1"/>
                     <Label Content="Введите название вклада" HorizontalAlignment="Left" Margin="520,15,0,0" VerticalAlignment="Top" Height="31" Grid.Column="1"/>
                     <TextBox x:Name="NameContribution" HorizontalAlignment="Left" Height="20" Margin="539,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" Grid.Column="1"/>

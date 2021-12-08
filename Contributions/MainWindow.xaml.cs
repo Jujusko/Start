@@ -20,7 +20,7 @@ namespace Contributions
     /// </summary>
     public partial class MainWindow : Window
     {
-        ExampleContribution exCont;
+        Contribution exCont;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Contributions
             double summ = Convert.ToDouble(Summ.Text);
             double srok = Convert.ToDouble(TextBoxSrok.Text);
             double procent = Convert.ToDouble(Procent.Text);
-            exCont = new(Name.Text, summ, Convert.ToString(DatePickerDate.SelectedDate), Convert.ToDouble(TextBoxSrok.Text), Convert.ToDouble(Procent.Text));
+            exCont = new(Name.Text, summ, Convert.ToString(DatePickerDate.SelectedDate), Convert.ToInt32(TextBoxSrok.Text), Convert.ToDouble(Procent.Text));
             // Ввод исходных данных в окно вкладов
             Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine;
 
