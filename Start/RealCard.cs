@@ -13,6 +13,7 @@ namespace Start
         public override double Deposite { get ; set; }
         public override string Name { get; set; }
         public int Index { get; set; }
+        public int Tranzactions { get; set; }
         public override double AccumulatedCashBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public RealCard(int balance, string name, int index)
@@ -31,6 +32,7 @@ namespace Start
         public override void ChangeBalance(int money)
         {
             Balance -=money;
+            Tranzactions += money;
             //throw new NotImplementedException();//Руслан на реализацию
         }
 

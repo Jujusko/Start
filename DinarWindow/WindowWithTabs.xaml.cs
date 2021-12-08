@@ -80,6 +80,8 @@ namespace DinarWindow
                 tmpButton.Content = name;
                 tmpButton.Click += ButtonAddData_Click;
                 ComboBoxCategs.Items.Add(tmpButton);
+                current_card.Tranzactions += sum;
+                LabelTranzRub.Content = current_card.Tranzactions;
             }
             else if (res == -1)
                 return;
@@ -117,13 +119,14 @@ namespace DinarWindow
             int i;
             CategoryInfo neededCat;
 
-            str = Convert.ToString(ComboBoxCategs.SelectedItem);
+            str = ComboBoxCategs.Text;
             neededCat = Garbage.user.bla.GetCategory(str);
             i = 0;
-            if (StacPanelAllBoughts.Children.Count > 0)
+            while (i < StacPanelAllBoughts.Children.Count)
             {
                 StacPanelAllBoughts.Children.RemoveAt(StacPanelAllBoughts.Children.Count - 1);
             }
+            i = 0;
             while (i < neededCat.Needed.Count)
             {
                 Button createdBut = new();

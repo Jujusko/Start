@@ -50,7 +50,7 @@ namespace Start.Dinar.Categories
                 if (CheckTranzPlace(newTranz, neededCat.Needed[i]) == 0)
                     break;
             }
-            neededCat.AddTranz(newTranz);
+            neededCat.AddTranz(newTranz, i);
             //CategoryInfo tmp = CurrentCategory[numbCategory];
             //flag = 1;
             //treatHead = tmp;

@@ -45,6 +45,10 @@ namespace Start.Dinar.Categories
         {
             Needed.Add(newTranz);
         }
+        public void AddTranz(Tranzactions newTranz, int index)
+        {
+            Needed.Insert(index, newTranz);
+        }
         public void Delete(int day, int mounth, int year, int sum)
         {
             Tranzactions newTranz = new(day, mounth, year, sum);
