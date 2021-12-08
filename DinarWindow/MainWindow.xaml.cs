@@ -23,7 +23,6 @@ namespace DinarWindow
     public partial class MainWindow : Window
     {
         AllData Garb = AllData.GetInstance();
-        public User userName = new User("null");
         public MainWindow()
         {
             InitializeComponent();
@@ -35,9 +34,9 @@ namespace DinarWindow
             WindowWithTabs aaa = new();
 
             aaa.Show();
-            this.Close();
             Garb.user.UserName = TextBoxUserName.Text;
             Garb.user.bla = new();
+            this.Close();
         }
     }
     //TODO добавить список категорий

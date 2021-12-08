@@ -81,6 +81,8 @@ namespace DinarWindow
                 tmpButton.Content = name;
                 tmpButton.Click += ButtonAddData_Click;
                 ComboBoxCategs.Items.Add(tmpButton);
+                current_card.Tranzactions += sum;
+                LabelTranzRub.Content = current_card.Tranzactions;
             }
             else if (res == -1)
                 return;
@@ -118,13 +120,14 @@ namespace DinarWindow
             int i;
             CategoryInfo neededCat;
 
-            str = Convert.ToString(ComboBoxCategs.SelectedItem);
+            str = ComboBoxCategs.Text;
             neededCat = Garbage.user.bla.GetCategory(str);
             i = 0;
-            if (StacPanelAllBoughts.Children.Count > 0)
+            while (i < StacPanelAllBoughts.Children.Count)
             {
                 StacPanelAllBoughts.Children.RemoveAt(StacPanelAllBoughts.Children.Count - 1);
             }
+            i = 0;
             while (i < neededCat.Needed.Count)
             {
                 Button createdBut = new();
@@ -145,10 +148,12 @@ namespace DinarWindow
         }
         public void ChangeTranzaction(string catName, int sum, string date, int flag, int prevSum, string prevDate)
         {
+            RealCard curCard = Garbage.user.GetActualCard(Convert.ToString(Label2.Content));
             if (flag == 1)
-                Garbage.user.bla.ChangeTranzaction(catName, sum, date, prevSum, prevDate);
-            else
-                Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate);
+                if (Garbage.user.bla.ChangeTranzaction(catName, sum, date, prevSum, prevDate, curCard) == 0)
+                    return;//будет окно с ошибкой
+                else
+                    Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate);
             this.IsEnabled = true;
         }
 

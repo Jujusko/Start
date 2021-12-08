@@ -31,7 +31,7 @@ namespace DinarWindow
         private void ButtonCreateCard_Click(object sender, RoutedEventArgs e)
         {
             RealCard tmp = new(Convert.ToInt32(TextBoxBalance.Text), TextBoxCardName.Text, Garb.user.Cards.Count);
-            _window.userName.Cards.Add(tmp);
+            Garb.user.Cards.Add(tmp);
         }
     }
 }

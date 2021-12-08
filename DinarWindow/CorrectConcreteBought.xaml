@@ -10,7 +10,7 @@
         <Button x:Name="ButtonAcceptCorrect" Content="Изменить" HorizontalAlignment="Left" Margin="47,195,0,0" VerticalAlignment="Top" Height="22" Width="103" Click="ButtonAcceptCorrect_Click"/>
         <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="21,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <DatePicker x:Name="DatePickerDateOfBought" HorizontalAlignment="Left" Margin="150,87,0,0" VerticalAlignment="Top" DisplayDate="2021-12-07"/>
-        <Button x:Name="ButtonDeleteTranzaction" Content="Button" HorizontalAlignment="Left" Margin="169,196,0,0" VerticalAlignment="Top" Width="72" Click="ButtonDeleteTranzaction_Click"/>
+        <Button x:Name="ButtonDeleteTranzaction" Content="Удалить" HorizontalAlignment="Left" Margin="169,196,0,0" VerticalAlignment="Top" Width="72" Click="ButtonDeleteTranzaction_Click"/>
 
     </Grid>
 </Window>

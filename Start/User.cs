@@ -36,7 +36,7 @@ namespace Start
             {
                 if (Cards[i].Name == cardName)
                 {
-                    Cards[i].ChangeBalance(sum);
+                    Cards[i].ChangeBalanceMinus(sum);
                     return;
                 }
             }

@@ -9,9 +9,6 @@ namespace Start
     public abstract class AbstractCard
     {
         public abstract int Balance { get; set; }
-        public abstract double CashBack { get; set; }//сколько %
-        public abstract double Deposite { get; set; }
-        public abstract double AccumulatedCashBack { get; set; }// сколько рублей за месяц накоплено
         public abstract string Name { get; set;}
 
         public AbstractCard()
@@ -19,8 +16,8 @@ namespace Start
 
         }
 
-        public abstract void WriteBalance();
-        public abstract void ChangeBalance(int money);// Руслан на реализацию
-        public abstract void CheckCashBack();//Ася. Если получится, круто, нет - плевать
+        public abstract void ChangeBalancePlus(int money);
+        public abstract void ChangeBalanceMinus(int money);
+
     }
 }
