@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using DinarWindow.Cards;
 using System.Collections.Generic;
 using System.Linq;
@@ -150,5 +150,6 @@ namespace DinarWindow
                 Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate);
             this.IsEnabled = true;
         }
+
     }
 }
