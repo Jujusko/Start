@@ -252,12 +252,12 @@ namespace Start.Dinar.Categories
                     tmp.Delete(i);
             }
         }
-        public void ChangeTranzaction(string catName, int sum, string date, int prevSum, string prevDate)
+        public int ChangeTranzaction(string catName, int sum, string date, int prevSum, string prevDate, RealCard card)
         {
             CategoryInfo tmp;
             Tranzactions toChange = new Tranzactions(date, sum);
             int i;
-
+          
             tmp = GetCategory(catName);
             i = -1;
             while (++i < tmp.Needed.Count)
@@ -265,10 +265,15 @@ namespace Start.Dinar.Categories
                 if ((prevDate == tmp.Needed[i].Date) &&
                     (prevSum== tmp.Needed[i].Sum))
                 {
-                    tmp.Needed[i].Date = date;
-                    tmp.Needed[i].Sum = sum;
+                    if (sum <= card.Balance + prevSum)
+                    {
+                        tmp.Needed[i].Date = date;
+                        tmp.Needed[i].Sum = sum;
+                        return 1;
+                    }
                 }
             }
+            return 0;
         }
     }
 }

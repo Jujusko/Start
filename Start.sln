@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Start", "Start\Start.csproj", "{D4AFA0C9-EEA4-4B52-B598-AD45E1FC5A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinarWindow", "DinarWindow\DinarWindow.csproj", "{373191CD-07D2-4E1D-B009-8DDEA3EA995A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project", "DinarWindow\Project.csproj", "{373191CD-07D2-4E1D-B009-8DDEA3EA995A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

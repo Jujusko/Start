@@ -9,12 +9,9 @@ namespace Start
     public class RealCard:AbstractCard
     {
         public override int Balance { get; set ; }
-        public override double CashBack { get ; set ; }
-        public override double Deposite { get ; set; }
         public override string Name { get; set; }
         public int Index { get; set; }
         public int Tranzactions { get; set; }
-        public override double AccumulatedCashBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public RealCard(int balance, string name, int index)
         {
@@ -24,21 +21,19 @@ namespace Start
             Console.WriteLine($"You success created card {name}. Current balance is {balance}.");
         }
 
-        public override void WriteBalance()
-        {
-            Console.WriteLine(Balance);
-        }
 
-        public override void ChangeBalance(int money)
+        public override void ChangeBalanceMinus(int money)
         {
             Balance -=money;
             Tranzactions += money;
             //throw new NotImplementedException();//Руслан на реализацию
         }
 
-        public override void CheckCashBack()
+        public override void ChangeBalancePlus(int money)
         {
-            throw new NotImplementedException();//Ася. Если получится, круто, нет - плевать
+            Balance -= money;
+            Tranzactions += money;
+            //throw new NotImplementedException();//Руслан на реализацию
         }
     }
 

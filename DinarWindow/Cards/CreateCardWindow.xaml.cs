@@ -30,11 +30,6 @@ namespace DinarWindow.Cards
             InitializeComponent();
         }
 
-        private void TextBoxNameCard_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void ButtonAddNewItem_Click(object sender, RoutedEventArgs e)
         {
             _a.CreateCard(TextBoxNameCard.Text, Convert.ToInt32(TextBoxBalance.Text));
