@@ -69,23 +69,59 @@ namespace Contributions
             return newdata;
         }
 
-        // 
+        // метод изменения месяца
+        public string ChangeMonth()
+        {
+            //"чт 05.05.2020"
+            string newday = Date.Substring(0, 5); //чт 05
+            int newmonth = Convert.ToInt32(Date.Substring(6, 2)) + 1; // 05 + 1 = 6
+            string newmonth2 = Convert.ToString(newmonth % 12);
+            if (newmonth < 10)
+            {
+                newmonth2 = "0" + Convert.ToString(newmonth);
+            }
+            int newyear = Convert.ToInt32(Date.Substring(9, 4));
+            if (newmonth == 12)
+            {
+                newyear =
+            }
+            string month = (newday) + "." + newmonth2 + "." + Convert.ToString(newyear);
+            return month;
+        }
 
         //начисление процентов
-        public void PlusProcent()
+        public int PlusProcent()
         {
+            double plusprocent = 0;
             double summcontributiontoendsrok = 0;
             double plussumm = 0;
-            DateToEnd();
-            while (!newdata)
+            string newdata = DateToEnd();
+            DateTime today = DateTime.Now;
+            string today2 = Convert.ToString(today);
+
+            if (newdata != today2)
             {
-                if ()
+                if ( == today2)
+                {
                     plusprocent = (Summ * Procent * 31 / 365) / 100;
-                if ()
+                    Summ += plusprocent;
+                    //
+                }
+                if ( == today2)
+                {
                     plusprocent = (Summ * Procent * 28 / 365) / 100;
-                if ()
+                    Summ += plusprocent;
+                }
+                if ( == today2)
+                {
                     plusprocent = (Summ * Procent * 30 / 365) / 100;
+                    Summ += plusprocent;
+                }
+                return 1;
+            }
+            else
+            {
+                return (-1);
             }
         }
-    }
 }
