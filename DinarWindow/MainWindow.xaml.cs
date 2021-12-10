@@ -26,7 +26,6 @@ namespace DinarWindow
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         private void ButtonAddUser_Click(object sender, RoutedEventArgs e)

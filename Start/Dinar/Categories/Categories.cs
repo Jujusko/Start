@@ -181,13 +181,14 @@ namespace Start.Dinar.Categories
                     if (AddNewPurchaseByDate(date, sum, categoryName, balance) == -1)
                         return -1;
                     i = -1;
-                    return 1;
+                    //return 1;
                 }
                 i++;
             }
             if (i != -1)
             {
                 NewCategory(categoryName, sum, date);
+                return 1;
             }
             return 0;
         }
@@ -237,28 +238,32 @@ namespace Start.Dinar.Categories
             }
             throw new Exception("Этого не должно произойти");
         }
-        public void DeleteTranzaction(string catName, int sum, string date)
+        public void DeleteTranzaction(string catName, int sum, string date, RealCard card)
         {
+            AllData Garbage = AllData.GetInstance();
+
             CategoryInfo tmp;
             Tranzactions toDel = new Tranzactions(date, sum);
             int i;
 
-            tmp = GetCategory(catName);
+            tmp = Garbage.user.bla.GetCategory(catName);
             i = -1;
             while (++i < tmp.Needed.Count)
             {
                 if ((toDel.Date == tmp.Needed[i].Date) &&
                     (toDel.Sum == tmp.Needed[i].Sum))
+                {
+                    card.Balance += sum;
                     tmp.Delete(i);
+                }
             }
         }
         public int ChangeTranzaction(string catName, int sum, string date, int prevSum, string prevDate, RealCard card)
         {
+            AllData Garbage = AllData.GetInstance();
             CategoryInfo tmp;
-            Tranzactions toChange = new Tranzactions(date, sum);
             int i;
-          
-            tmp = GetCategory(catName);
+            tmp = Garbage.user.bla.GetCategory(catName);
             i = -1;
             while (++i < tmp.Needed.Count)
             {
@@ -269,6 +274,7 @@ namespace Start.Dinar.Categories
                     {
                         tmp.Needed[i].Date = date;
                         tmp.Needed[i].Sum = sum;
+                        card.Balance = card.Balance + prevSum - sum;
                         return 1;
                     }
                 }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Start;
 
 namespace DinarWindow
 {
@@ -22,6 +23,7 @@ namespace DinarWindow
         private WindowWithTabs _wwindow;
         private int _balance;
         private string _catName;
+        
 
         public AddByCategoryName(WindowWithTabs window, string name, int balance)
         {
@@ -36,9 +38,9 @@ namespace DinarWindow
 
             date = DatePickerTranzDay.Text;
 
-            this.Close();
             _wwindow.IsEnabled = true;
             _wwindow.CreateCategory(Convert.ToInt32(TextBoxSum.Text), _catName, _balance, date);
+            this.Close();
         }
     }
 }

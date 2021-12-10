@@ -40,6 +40,7 @@
                     <Label x:Name="Label2" Content="Label" HorizontalAlignment="Left" Margin="369,23,0,0" VerticalAlignment="Top" Grid.Column="2" Background="White"/>
                     <Label x:Name="LabelCardName" Content="Текущая карта" HorizontalAlignment="Left" Margin="273,23,0,0" VerticalAlignment="Top" Grid.Column="2" Background="White" Width="91"/>
                     <StackPanel x:Name="StacPanelAllBoughts" Grid.Column="3" Background="White"/>
+                    <Label x:Name="LabelBalanceInTranz" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="412,23,0,0" VerticalAlignment="Top" Background="White" Width="70"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemCreditAnd" Content="" Header="Deposit And Credit">

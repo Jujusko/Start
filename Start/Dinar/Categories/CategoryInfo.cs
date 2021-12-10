@@ -27,7 +27,7 @@ namespace Start.Dinar.Categories
         //    Year = year;
         //    Sum = sum;
         //    NameCategory = nameCat;
-        //}
+        //}                                                                           
         public List<Tranzactions> Needed = new();
 
         public CategoryInfo(int day, int mounth, int year, int sum, string nameCat)

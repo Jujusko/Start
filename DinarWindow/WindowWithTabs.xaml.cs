@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Start;
 using Start.Dinar.Categories;
+using Project.UtilWindows;
 
 namespace DinarWindow
 {
@@ -65,7 +66,6 @@ namespace DinarWindow
             tmp.Show();
         }
 
-
         public void CreateCategory(int sum, string name, int balance, string date)
         {
             Button tmpButton;
@@ -84,7 +84,16 @@ namespace DinarWindow
                 LabelTranzRub.Content = current_card.Tranzactions;
             }
             else if (res == -1)
+            {
+
                 return;
+            }
+            else if (res == 1)
+            {
+
+            }
+            LabelBalanceInTranz.Content = current_card.Balance;
+            LabelCurCardBalance.Content = current_card.Balance;
             TextBoxTest.Text = name;
         }
 
@@ -148,11 +157,19 @@ namespace DinarWindow
         public void ChangeTranzaction(string catName, int sum, string date, int flag, int prevSum, string prevDate)
         {
             RealCard curCard = Garbage.user.GetActualCard(Convert.ToString(Label2.Content));
+            DeclineTranz win = new(this);
+
             if (flag == 1)
+            {
                 if (Garbage.user.bla.ChangeTranzaction(catName, sum, date, prevSum, prevDate, curCard) == 0)
-                    return;//будет окно с ошибкой
-                else
-                    Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate);
+                {
+                    win.Show();
+                }
+            }
+            else
+                Garbage.user.bla.DeleteTranzaction(catName, prevSum, prevDate, curCard);
+            LabelBalanceInTranz.Content = curCard.Balance;
+            LabelCardBalanceInfo.Content = curCard;
             this.IsEnabled = true;
         }
     }
