@@ -82,7 +82,7 @@ namespace OurProj
             TabItemTranzactions.IsEnabled = true;
         }
 
-        private void ButtonTmp_Click(object sender, RoutedEventArgs e)
+        public void ButtonTmp_Click(object sender, RoutedEventArgs e)
         {
             int i = -1;
             TextBoxTmp.Text = "";

@@ -21,7 +21,6 @@ namespace OurProj.PopupWindows
     public partial class FillCashBackField : Window
     {
         private MainWindow _window;
-        private 
         public FillCashBackField()
         {
             InitializeComponent();

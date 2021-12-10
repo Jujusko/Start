@@ -57,6 +57,7 @@ namespace OurProj.PopupWindows
                         _card.ChangeBalanceMinus(newSum);
                         _win.IsEnabled = true;
                         _win.LabelCardBalance.Content = _card.Balance;
+                        _win.ButtonTmp_Click(sender, e);
                         this.Close();
                         return;
                     }
@@ -68,6 +69,11 @@ namespace OurProj.PopupWindows
             }
             err.Show();
             this.Close();
+        }
+
+        private void ButtonTmp_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void ButtonDeleteTranz_Click(object sender, RoutedEventArgs e)
@@ -85,6 +91,7 @@ namespace OurProj.PopupWindows
                     _card.ChangeBalancePlus(thisTranz.Sum);
                     _win.LabelCardBalance.Content = _card.Balance;
                     _win.IsEnabled = true;
+                    _win.ButtonTmp_Click(sender, e);
                     this.Close();
                 }
             }
