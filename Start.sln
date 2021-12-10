@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Start", "Start\Start.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project", "DinarWindow\Project.csproj", "{373191CD-07D2-4E1D-B009-8DDEA3EA995A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OurProj", "OurProj\OurProj.csproj", "{DA7FA550-FCE5-4B00-B00D-F990B3513AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{373191CD-07D2-4E1D-B009-8DDEA3EA995A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{373191CD-07D2-4E1D-B009-8DDEA3EA995A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{373191CD-07D2-4E1D-B009-8DDEA3EA995A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7FA550-FCE5-4B00-B00D-F990B3513AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7FA550-FCE5-4B00-B00D-F990B3513AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7FA550-FCE5-4B00-B00D-F990B3513AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7FA550-FCE5-4B00-B00D-F990B3513AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

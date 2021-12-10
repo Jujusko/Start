@@ -16,8 +16,8 @@ namespace Start
 
         }
 
-        public abstract void ChangeBalancePlus(int money);
-        public abstract void ChangeBalanceMinus(int money);
+        public abstract int ChangeBalancePlus(int money);
+        public abstract int ChangeBalanceMinus(int money);
 
     }
 }

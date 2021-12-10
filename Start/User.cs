@@ -14,16 +14,19 @@ namespace Start
         public string UserName;
         public int Len;
         public Categories bla = new();
+        public List<string> Categs = new();
+        public List<Tranz> tranzactions { get; set; }
 
         public User(string userName)
         {
             Len = 0;
             UserName = userName;
+            tranzactions = new();
         }
 
         public void AddNewCard(string cardName, int balance)
         {
-            RealCard newCard = new(balance, cardName, Cards.Count);
+            RealCard newCard = new(balance, cardName);
             Cards.Add(newCard);
             Len++;
         }

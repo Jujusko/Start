@@ -1,0 +1,36 @@
+﻿<Window x:Class="OurProj.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OurProj"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl x:Name="TabControlMain">
+            <TabItem x:Name="TabItemUserInfo" Header="User Info">
+                <Grid Background="#FFCADE6E">
+                    <Label x:Name="LabelHelloUser" Content="Добро пожаловать" HorizontalAlignment="Left" Margin="246,10,0,0" VerticalAlignment="Top" Width="208"/>
+                    <Button x:Name="ButtonSelectUser" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="133" Click="ButtonSelectUser_Click"/>
+                    <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Left" Margin="550,30,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBoxCards_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabItemTranzactions" Header="Tranzactions">
+                <Grid Background="#FF46C5EA">
+                    <StackPanel x:Name="StacPanelTranzactions" Margin="550,30,0,0" Background="White">
+                    </StackPanel>
+                    <Label x:Name="LabelCardName" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Background="#FFDAD3D3"/>
+                    <Label x:Name="LabelCardBalance" Content="" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="80" Background="#FFDAD3D3"/>
+                    <ComboBox x:Name="ComboBoxCategs" HorizontalAlignment="Left" Margin="240,240,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TextBoxTmp" HorizontalAlignment="Left" Margin="26,145,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="147"/>
+                    <Button x:Name="ButtonTmp" Content="Button" HorizontalAlignment="Left" Margin="50,334,0,0" VerticalAlignment="Top" Click="ButtonTmp_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Third">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
