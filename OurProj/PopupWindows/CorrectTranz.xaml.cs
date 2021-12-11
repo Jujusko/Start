@@ -25,22 +25,21 @@ namespace OurProj.PopupWindows
         private MainWindow _win { get; set; }
         private string _catName { get; set; }
         private RealCard _card { get; set; }
-        private int prevSum { get; set; }
-        private DateTime prevDate { get; set; }
-        private AllData Data = AllData.GetInstance();
+        private int PrevSum { get; set; }
+        private DateTime PrevDate { get; set; }
         public CorrectTranz(MainWindow window, RealCard card, Tranz curTranz)
         {
             InitializeComponent();
             _win = window;
             _catName = curTranz.CatName;
             _card = card;
-            prevDate = curTranz.DateTranz;
-            prevSum = curTranz.Sum;
+            PrevDate = curTranz.DateTranz;
+            PrevSum = curTranz.Sum;
         }
 
         private void ButtonChangeTranz_Click(object sender, RoutedEventArgs e)
         {
-            Tranz thisTranz = new(prevDate, _catName, prevSum);
+            Tranz thisTranz = new(PrevDate, _catName, PrevSum);
             int newSum;
             ErrorWindow err = new(_win);
 
@@ -49,11 +48,11 @@ namespace OurProj.PopupWindows
             {
                 if (thisTranz.Equals(_card.Tranzactions[i]))
                 {
-                    if (_card.Balance + prevSum >= newSum)
+                    if (_card.Balance + PrevSum >= newSum)
                     {
                         _card.Tranzactions[i].DateTranz = DatePickerDateOfBought.DisplayDate;
                         _card.Tranzactions[i].Sum = newSum;
-                        _card.ChangeBalancePlus(prevSum);
+                        _card.ChangeBalancePlus(PrevSum);
                         _card.ChangeBalanceMinus(newSum);
                         _win.IsEnabled = true;
                         _win.LabelCardBalance.Content = _card.Balance;
@@ -78,9 +77,7 @@ namespace OurProj.PopupWindows
 
         private void ButtonDeleteTranz_Click(object sender, RoutedEventArgs e)
         {
-            Tranz thisTranz = new(prevDate, _catName, prevSum);
-            int newSum;
-            ErrorWindow err = new(_win);
+            Tranz thisTranz = new(PrevDate, _catName, PrevSum);
 
             for (int i = 0; i < _card.Tranzactions.Count; i++)
             {
@@ -96,26 +93,5 @@ namespace OurProj.PopupWindows
                 }
             }
         }
-        /*
-* DateTime dayOfBought;
-   int sum;
-   Tranz newTranz;
-   ErrorWindow err = new(_window);
-
-   sum = Convert.ToInt32(TextBoxSum.Text);
-   dayOfBought = DatePickerBoughtDay.DisplayDate;
-   newTranz = new(dayOfBought, category, sum);
-
-   if (curCard.ChangeBalanceMinus(sum) == -1)
-       err.Show();
-   else
-   {
-       curCard.Tranzactions.Add(newTranz);
-   }
-
-   _window.LabelCardBalance.Content = curCard.Balance;
-   _window.IsEnabled = true;
-   this.Close();
-* */
     }
 }
