@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OurProj.PopupWindows"
         mc:Ignorable="d"
-        Title="FillCashBackField" Height="450" Width="800">
-    <Grid>
-        
+        Title="FillCashBackField" Height="200" Width="500">
+    <Grid x:Name="CashBack" Background="#FFB9F13F">
+        <TextBox x:Name="TextBoxCatName" HorizontalAlignment="Left" Margin="30,50,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxPercent" HorizontalAlignment="Right" Margin="270,50,30,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonAdd" Content="Add" HorizontalAlignment="Center" Width="100" Height="35" Margin="0,140,0,0" VerticalAlignment="Top" FontWeight="Normal">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF5FE421" Offset="1"/>
+                    <GradientStop Color="#FF193D08" Offset="0.269"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Category Name" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Percent" HorizontalAlignment="Right" Margin="390,20,50,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

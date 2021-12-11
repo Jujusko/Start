@@ -21,9 +21,19 @@ namespace OurProj.PopupWindows
     public partial class FillCashBackField : Window
     {
         private MainWindow _window;
-        public FillCashBackField()
+        private AllData Data = AllData.GetInstance();
+        private RealCard CurCard { get; set; }
+        public FillCashBackField(MainWindow window, RealCard card)
         {
             InitializeComponent();
+            _window = window;
+            CurCard = card;
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            CashBackByCategory newCB = new(TextBoxCatName.Text, Convert.ToInt32(TextBoxPercent.Text));
+            CurCard.CashBacks.Add(newCB);
         }
     }
 }
