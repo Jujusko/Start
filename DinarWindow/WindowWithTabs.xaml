@@ -79,7 +79,7 @@
                     </TextBox>
                     <TextBox x:Name="Procent" HorizontalAlignment="Left" Height="22" Margin="151,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Foreground="#FFABADB3" TextAlignment="Right" Background="White" BorderBrush="#FFABADB3" Grid.Column="1"/>
                     <TextBox x:Name="SummToSnyatie" HorizontalAlignment="Left" Height="24" Margin="525,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="#FFB4B4B4" Background="White" BorderBrush="#FF888888" TextAlignment="Right" Visibility="Visible" Grid.Column="1"/>
-                    <Button x:Name="PlusContribution" Content="Добавить вклад" HorizontalAlignment="Left" Height="24" Margin="46,185,0,0" VerticalAlignment="Top" Width="160" Click="PlusContribution_Click" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                    <Button x:Name="PlusContribution" Content="Добавить вклад" HorizontalAlignment="Left" Height="24" Margin="128,249,0,0" VerticalAlignment="Top" Width="160" Click="PlusContribution_Click" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -99,6 +99,18 @@
                     <TextBox x:Name="NameContribution" HorizontalAlignment="Left" Height="20" Margin="539,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" Grid.Column="1"/>
                     <DatePicker x:Name="DateTransaktion" HorizontalAlignment="Left" Height="25" Margin="339,216,0,0" VerticalAlignment="Top" Width="115" Grid.Column="1"/>
                     <Button Content="Удалить транзакцию" HorizontalAlignment="Left" Height="24" Margin="508,217,0,0" VerticalAlignment="Top" Width="157" Grid.Column="1"/>
+                    <Label Content="Выберите тип вклада" HorizontalAlignment="Left" Height="29" Margin="48,177,0,0" VerticalAlignment="Top" Width="226" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.051"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <RadioButton x:Name="ContributionWithReplenishmentAndWithdrawal1" Content="Вклад на пополнение и снятие" HorizontalAlignment="Left" Margin="49,221,0,0" VerticalAlignment="Top" Height="19" Width="202" Grid.ColumnSpan="2"/>
+                    <RadioButton x:Name="ContributionWithReplenishment1" Content="Вклад на пополнение" HorizontalAlignment="Left" Margin="49,203,0,0" VerticalAlignment="Top" Height="20" Width="226" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </TabItem>

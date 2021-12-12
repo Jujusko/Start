@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contributions\Contributions.csproj" />
     <ProjectReference Include="..\Start\Start.csproj" />
   </ItemGroup>
 

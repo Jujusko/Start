@@ -7,22 +7,28 @@ using Start;
 
 namespace Contributions
 {
-    public class Contribution : AbstractCard
+    public abstract class Contribution : AbstractCard
     {
         public override string Name { get; set; }
         public override int Balance { get; set; }
+        public string Nazvanie { get; set; }
+        public int Summ{ get; set; }
+
         public string Date { get; set; } // календарик для впф // 05/05/2021
         public int TermOfDeposit { get; set; } // срок вклада в месяцах // 12
         public double Procent { get; set; }
-        public double  SummaPopolneniya { get; set; }
-        public double SummaSnyatiyaiya { get; set; }
-        public Contribution(string name, int summ, string date, int termofdeposit, double procent)
+        //public abstract double SummaPopolneniya { get; set; }
+        //public abstract double SummaSnyatiyaiya { get; set; }
+        public Contribution(string name, int summ, string date, int termofdeposit, double procent) /*double summapopolneniya*/ /*double summasnyatiyaiya*/
         {
-            Name = name;
-            Balance = summ;
+
+            Nazvanie = name;
+            Summ = summ;
             Date = date;
             TermOfDeposit = termofdeposit;
             Procent = procent;
+            //SummaPopolneniya = summapopolneniya;
+            //SummaSnyatiyaiya = summasnyatiyaiya;
         }
 
         #region
@@ -48,80 +54,152 @@ namespace Contributions
         //}
         #endregion 
 
-        public override void ChangeBalancePlus(int money){ }
-        public override void ChangeBalanceMinus(int money){ }
-
-        //дата закрытия вклада 
-        public string DateToEnd(string Date, int TermOfDeposit)
+        public override void ChangeBalancePlus(int money) 
         {
-            string newday = Date.Substring(0, 5); // "чт 05.05.2020"      чт 05
-            int newmonth = Convert.ToInt32(Date.Substring(6, 2)) + TermOfDeposit; // 05 + 12 = 17       05 + 13 = 18
-            int plusyear = newmonth / 12; // 18 / 12 = 1
-            int newyear = Convert.ToInt32(Date.Substring(9, 4)) + plusyear; // 2020 + 1 = 2021
-            newmonth = newmonth % 12; // 18 % 12 = 6
-            string newmonth2 = "0";
-            if (newmonth < 10)
+        }
+        public override void ChangeBalanceMinus(int money) 
+        {
+        }
+
+
+        //дата открытия вклада //
+        public string DataToStart()
+        {
+            string newdata = Date.Substring(3, 10);
+            return newdata;
+        }
+
+
+        //дата закрытия вклада //если 2100 год тесты?
+        public string DataToEnd()
+        {
+            string newday = Date.Substring(3, 2); // "чт 12.11.2020"   05
+            int newmonth = Convert.ToInt32(Date.Substring(6, 2)) + TermOfDeposit; // 11 + 13 = 24       05 + 13 = 18
+            int plusyear = newmonth / 12; // 24 / 12 = 2
+            int newyear = Convert.ToInt32(Date.Substring(11, 2)) + plusyear; // 20 + 2 = 2022
+            newmonth = (newmonth % 12); // 24 % 12 = 0
+            string newmonth2 = Convert.ToString(newmonth % 12);
+            //string newmonth2 = "0";
+            if (newmonth == 0)
+            {
+                newmonth2 = "01";
+            }
+            else if (newmonth < 10)
             {
                 newmonth2 = "0" + Convert.ToString(newmonth);
             }
             string newdata = (newday) + "." + newmonth2 + "." + Convert.ToString(newyear);
-
             return newdata;
-        }
+         }
 
-        // метод изменения месяца
-        public string ChangeMonth()
+
+        // метод изменения месяца (прибавляет один месяц)  в дате //тесты?
+        public string ChangeMonthInDate()
         {
             //"чт 05.05.2020"
-            string newday = Date.Substring(0, 5); //чт 05
-            int newmonth = Convert.ToInt32(Date.Substring(6, 2)) + 1; // 05 + 1 = 6
-            string newmonth2 = Convert.ToString(newmonth % 12);
+            string newday = Date.Substring(3, 2); //чт 05
+            int month = Convert.ToInt32(Date.Substring(6, 2)); // 5
+            int newmonth = Convert.ToInt32(Date.Substring(6, 2)) + 1; // 05 + 1 = 6  //11 + 1 = 12 //12 + 1 = 13
+            string newmonth2 = Convert.ToString(newmonth % 12); // "6" 
+            if (newmonth == 12)
+            {
+                newmonth2 = "12";
+            }
+            if (newmonth == 13)
+            {
+                newmonth = 13 % 12;
+            }
             if (newmonth < 10)
             {
                 newmonth2 = "0" + Convert.ToString(newmonth);
             }
-            int newyear = Convert.ToInt32(Date.Substring(9, 4));
-            if (newmonth == 12)
+
+            // "06"
+            int newyear = Convert.ToInt32(Date.Substring(11, 2)); //2020
+
+            if (month == 12)
             {
-                newyear =
+                newyear = newyear + 1;
             }
-            string month = (newday) + "." + newmonth2 + "." + Convert.ToString(newyear);
-            return month;
+            string newdatamonth = (newday) + "." + newmonth2 + "." + Convert.ToString(newyear);
+            return newdatamonth;
+        }
+
+        // метод изменения месяца (прибавляет один месяц)
+        public int ChangeMonth(int data)
+        {
+            int newmonth = data + 1; // 5 + 1 = 6  //11 + 1 = 12 //12 + 1 = 13
+        
+            if (newmonth == 13)
+            {
+                newmonth = 13 % 12;
+            }
+            return newmonth;
+        }
+
+        
+        // день открытия вклада
+        public string DayOpenContribution()
+        {
+            string newday = Date.Substring(3, 2);
+            return newday;
+        }
+
+
+        //день на данный момент для сравнения
+        public string DayToNow()
+        {
+            DateTime today = DateTime.Now;
+            string today2 = Convert.ToString(today); //"чт 09.07.20 20:04"
+            string today3 = today2.Substring(3, 2); // 09.07.20 = 09
+            return today3; // 09
+        }
+
+        //дата на данный момент для сравнения
+        public string DataToNow()
+        {
+            DateTime today = DateTime.Now;
+            string today2 = Convert.ToString(today); //"чт 09.07.20 20:04"
+            string today3 = today2.Substring(3, 8); // 09.07.20
+            return today3;
+        }
+
+        //месяц сегодняшней даты
+        public string DataMonthToNow()
+        {
+            DateTime today = DateTime.Now;
+            string today2 = Convert.ToString(today); //"чт 09.07.20 20:04"
+            string today3 = today2.Substring(6, 2); //07
+            return today3;
+        }
+
+        //месяц открытия вклада
+        public string DataMonthToDate()
+        {
+            string today = Date;
+            string today2 = Convert.ToString(today); //"чт 08.06.2020"
+            string today3 = today2.Substring(6, 2); // 06
+            return today3;
         }
 
         //начисление процентов
-        public int PlusProcent()
-        {
-            double plusprocent = 0;
-            double summcontributiontoendsrok = 0;
-            double plussumm = 0;
-            string newdata = DateToEnd();
-            DateTime today = DateTime.Now;
-            string today2 = Convert.ToString(today);
+        public abstract int PlusProcent();
+    }
 
-            if (newdata != today2)
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Contribution One = new ContributionPlus("WER", 10000, "чт 12.12.2020", 12, 8.0, 10000);
+
+            int plusprocent = One.PlusProcent();
+            if  (plusprocent == 1)
             {
-                if ( == today2)
-                {
-                    plusprocent = (Summ * Procent * 31 / 365) / 100;
-                    Summ += plusprocent;
-                    //
-                }
-                if ( == today2)
-                {
-                    plusprocent = (Summ * Procent * 28 / 365) / 100;
-                    Summ += plusprocent;
-                }
-                if ( == today2)
-                {
-                    plusprocent = (Summ * Procent * 30 / 365) / 100;
-                    Summ += plusprocent;
-                }
-                return 1;
+                Balance += money;
+                Tranzactions += money;
             }
-            else
-            {
-                return (-1);
-            }
+            // remove.One;
+
         }
+    }
 }

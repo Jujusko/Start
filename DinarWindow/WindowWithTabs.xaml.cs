@@ -160,13 +160,24 @@ namespace DinarWindow
         Contribution exCont;
         private void PlusContribution_Click(object sender, RoutedEventArgs e)
         {
-            double summ = Convert.ToDouble(Summ.Text);
-            double srok = Convert.ToDouble(TextBoxSrok.Text);
+            int summ = Convert.ToInt32(Summ.Text);
+            int srok = Convert.ToInt32(TextBoxSrok.Text);
             double procent = Convert.ToDouble(Procent.Text);
-            exCont = new(Name.Text, summ, Convert.ToString(DatePickerDate.SelectedDate), Convert.ToInt32(TextBoxSrok.Text), Convert.ToDouble(Procent.Text));
-            // Ввод исходных данных в окно вкладов
-            Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine;
+            string datecontribution = Convert.ToString(DatePickerDate.SelectedDate);
 
+            // Ввод исходных данных в окно вкладов
+            exCont = new(Convert.ToString(Name.Text), summ, datecontribution, srok, procent);
+            
+            if (ContributionWithReplenishment1.IsChecked == true)
+            {               
+                Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine +
+                    "вклад на пополнение ";
+            }
+            else if (ContributionWithReplenishmentAndWithdrawal1.IsChecked == true)
+            {
+                Contributions.Text = DatePickerDate.Text + " " + Name.Text + " " + Summ.Text + "руб " + TextBoxSrok.Text + "мес " + Procent.Text + "% " + Environment.NewLine +
+                    "вклад на пополнение и снятие";
+            }
         }
 
         private void GetTransaktion_Click(object sender, RoutedEventArgs e)
