@@ -22,13 +22,31 @@ namespace OurProj.PopupWindows
     {
         private AllData AllInfo = AllData.GetInstance();
         private MainWindow _window { get; set; }
+        private RealCard Card { get; set; }
         public CreateCard(MainWindow win)
         {
             InitializeComponent();
             _window = win;
+            ButtonAddCashBack.IsEnabled = false;
+            ButtonOK.IsEnabled = false;
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
+        {
+            //int balance;
+            _window.IsEnabled = true;
+            this.Close();
+        }
+
+        private void ButtonAddCashBack_Click(object sender, RoutedEventArgs e)
+        {
+            FillCashBackField window = new(_window, Card);
+
+            window.Show();
+            ButtonOK.IsEnabled = true;
+        }
+
+        private void ButtonAddCard_Click(object sender, RoutedEventArgs e)
         {
             int balance;
             string name;
@@ -39,12 +57,11 @@ namespace OurProj.PopupWindows
             name = TextBoxName.Text;
             card.Content = name;
             newCard = new(balance, name);
+            Card = newCard;
             AllInfo.user.Cards.Add(newCard);
 
             _window.ComboBoxCards.Items.Add(card);
-
-            _window.IsEnabled = true;
-            this.Close();
+            ButtonAddCashBack.IsEnabled = true;
         }
     }
 }

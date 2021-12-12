@@ -48,11 +48,26 @@ namespace OurProj.PopupWindows
             else
             {
                 curCard.Tranzactions.Add(newTranz);
+                TryCashBack(curCard, newTranz);
             }
 
             _window.LabelCardBalance.Content = curCard.Balance;
             _window.IsEnabled = true;
             this.Close();
+        }
+        private void TryCashBack(RealCard curCard, Tranz newTranz)
+        {
+            int profit = 0;
+            for (int i = 0; i < curCard.CashBacks.Count; i++)
+            {
+                if (curCard.CashBacks[i].CatName == newTranz.CatName)
+                {
+                    profit = newTranz.Sum * curCard.CashBacks[i].Percent / 100;
+                    newTranz.CashBack = profit;
+                    curCard.AccumulatedCashback += profit;
+                }
+            }
+            return ;
         }
     }
 }

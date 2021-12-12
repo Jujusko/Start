@@ -34,6 +34,8 @@ namespace OurProj.PopupWindows
         {
             CashBackByCategory newCB = new(TextBoxCatName.Text, Convert.ToInt32(TextBoxPercent.Text));
             CurCard.CashBacks.Add(newCB);
+            this.Close();
         }
+
     }
 }

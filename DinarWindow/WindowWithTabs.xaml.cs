@@ -80,7 +80,7 @@ namespace DinarWindow
                 tmpButton.Content = name;
                 tmpButton.Click += ButtonAddData_Click;
                 ComboBoxCategs.Items.Add(tmpButton);
-                current_card.Tranzactions += sum;
+                //current_card.Tranzactions += sum;
                 LabelTranzRub.Content = current_card.Tranzactions;
             }
             else if (res == -1)

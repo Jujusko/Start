@@ -11,6 +11,7 @@ namespace Start
         public string CatName { get; set; }
         public DateTime DateTranz { get; set; }
         public int Sum { get; set; }
+        public int CashBack { get; set; }
 
         //idk need or not
         public int Day { get; set; }
@@ -22,6 +23,7 @@ namespace Start
             DateTranz = day;
             CatName = category;
             Sum = sum;
+            CashBack = 0;
         }
 
         public static Tranz GetTranzaction(string info, string categName)

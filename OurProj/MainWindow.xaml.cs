@@ -82,6 +82,7 @@ namespace OurProj
             TabItemTranzactions.IsEnabled = true;
         }
 
+
         public void ButtonTmp_Click(object sender, RoutedEventArgs e)
         {
             int i = -1;
@@ -95,6 +96,8 @@ namespace OurProj
                 {
                     Button tranz = new();
                     tranz.Content = curCard.Tranzactions[i].DateTranz + "\n" + curCard.Tranzactions[i].Sum + "\n";
+                    if (curCard.Tranzactions[i].CashBack != 0)
+                        tranz.Content += curCard.Tranzactions[i].CashBack +"";
                     tranz.Click += ForEveryTranzaction;
                     StacPanelTranzactions.Children.Add(tranz);
                     TextBoxTmp.Text += curCard.Tranzactions[i].DateTranz + "\n" + curCard.Tranzactions[i].Sum + "\n";
@@ -115,5 +118,28 @@ namespace OurProj
             LabelCardBalance.Content = curCard.Balance;
         }
 
+        private void ButtonCrunhcForCashBack_Click(object sender, RoutedEventArgs e)
+        {
+            string catName;
+            RealCard card = AllInfo.user.GetActualCard(Convert.ToString(LabelCardName.Content));
+            for (int i = 0; i < card.CashBacks.Count; i++)
+            {
+                Button newCateg = new();
+
+                newCateg.Content = card.CashBacks[i].CatName;
+                newCateg.Click += ButtonAddBought;
+                ComboBoxCategs.Items.Add(newCateg);
+                AllInfo.user.Categs.Add(card.CashBacks[i].CatName);
+            }
+        }
+        private void ButtonAddBought(object sender, RoutedEventArgs e)
+        {
+            RealCard curCard = AllInfo.user.GetActualCard(Convert.ToString(LabelCardName.Content));
+            string catName;
+
+            catName = Convert.ToString(((Button)sender).Content);
+            NewTranzaction addNew = new(this, catName, curCard);
+            addNew.Show();
+        }
     }
 }
