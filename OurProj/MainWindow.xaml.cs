@@ -22,13 +22,15 @@ namespace OurProj
     /// </summary>
     public partial class MainWindow : Window
     {
-        AllData AllInfo = AllData.GetInstance();
+        public AllData AllInfo = AllData.GetInstance();
+        public List<LVTest> MyTest { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             ButtonInComboBoxForCards();
             ButtonInComboBoxForCategs();
             TabItemTranzactions.IsEnabled = false;
+            ListViewAnalyticks.IsEnabled = false;
         }
 
         #region AddCard
@@ -140,6 +142,26 @@ namespace OurProj
             catName = Convert.ToString(((Button)sender).Content);
             NewTranzaction addNew = new(this, catName, curCard);
             addNew.Show();
+
+        }
+
+        private void ButtonMonthAnalyticks_Click(object sender, RoutedEventArgs e)
+        {
+            MyTest = new();
+            LVTest one = new(1, "one");
+            LVTest two = new(2, "two");
+            LVTest three = new(3, "three");
+            MyTest.Add(one);
+            MyTest.Add(two);
+            MyTest.Add(three);
+            DateTime end = DateTime.Today;
+            DateTime start = DateTime.Today.AddMonths(-1);
+            AllInfo.user.MakeAnalyse(start, end);
+            DataContext = AllInfo.user;
+            ListViewAnalyticks.IsEnabled = true;
         }
     }
+    //if sender is button
+    //как пройти по всем итемам комбобокса
+    //какой ивент у текстбаттона
 }

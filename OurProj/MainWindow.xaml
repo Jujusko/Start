@@ -28,7 +28,26 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Third">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FF7D897D">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="Menu" Height="69*">
+                        </RowDefinition>
+                        <RowDefinition x:Name="Data" Height="337*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="ButtonMonthAnalyticks" Height="30" Width="80" Content="Месяц" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Center" Click="ButtonMonthAnalyticks_Click" />
+                    <Button x:Name="ButtonSeason" Height="30" Width="80" Content="Сезон"  HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Center"/>
+                    <Button x:Name="ButtonChooseDate" Height="30" Width="80" Content="Выбрать дату"  HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ComboBoxCategsForAnalyticks" HorizontalAlignment="Left" Margin="384,30,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+                    <ListView x:Name="ListViewAnalyticks" ItemsSource="{Binding AnaliseData}" Grid.Row="1">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding CatName}" Header="Category" Width="150"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding AvgSum}" Header="Total amount" Width="150"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding AmountSum}" Header="Avg amount" Width="150"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
                 </Grid>
             </TabItem>
         </TabControl>

@@ -31,12 +31,24 @@ namespace OurProj.PopupWindows
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Button newCateg = new();
+            int flag = 1;
 
             newCateg.Content = TextBoxCatName.Text;
             newCateg.Click += ButtonAddBought;
-            _window.ComboBoxCategs.Items.Add(newCateg);
+            foreach (Button temp in _window.ComboBoxCategs.Items)
+            {
+                if (Convert.ToString(temp.Content) == Convert.ToString(newCateg.Content))
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag != 0)
+            {
+                _window.ComboBoxCategs.Items.Add(newCateg);
 
-            Data.user.Categs.Add(TextBoxCatName.Text);
+                Data.user.Categs.Add(TextBoxCatName.Text);
+            }
             _window.IsEnabled = true;
             this.Close();
         }

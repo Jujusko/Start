@@ -6,13 +6,10 @@ namespace Start
 	{
 		static void Main(string[] args)
 		{
-			Dinar.Categories.Categories Categs = new();
+			DateTime er = DateTime.Now;
+			DateTime we = new(2021, 10, 20);
+			TimeSpan sum = er - we;
 
-			Categs.NewCategory("Eda", 100, null);
-            Console.WriteLine(Categs.PutToConsole("Eda"));
-			Categs.NewCategory("Taxi", 100, null);
-			Console.WriteLine(Categs.PutToConsole("Taxi"));
-			Categs.AddNewPurchaseByDate(null, 1000000, "Eda", 1);
 		}
 	}
 }

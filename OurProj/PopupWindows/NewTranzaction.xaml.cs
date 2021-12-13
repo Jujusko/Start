@@ -49,6 +49,7 @@ namespace OurProj.PopupWindows
             {
                 curCard.Tranzactions.Add(newTranz);
                 TryCashBack(curCard, newTranz);
+                Data.user.tranzactions.Add(newTranz);
             }
 
             _window.LabelCardBalance.Content = curCard.Balance;

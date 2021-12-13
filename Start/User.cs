@@ -14,14 +14,17 @@ namespace Start
         public string UserName;
         public int Len;
         public Categories bla = new();
-        public List<string> Categs = new();
+        public List<string> Categs { get; set; }
         public List<Tranz> tranzactions { get; set; }
+        public List<Analytics> AnaliseData { get; set; }
 
         public User(string userName)
         {
+            Categs = new();
             Len = 0;
             UserName = userName;
             tranzactions = new();
+            AnaliseData = new();
         }
 
         public void AddNewCard(string cardName, int balance)
@@ -58,6 +61,33 @@ namespace Start
                 i++;
             }
             throw new Exception("Этого никогда не произойдет");
+        }
+        public void MakeAnalyse(DateTime start, DateTime end)
+        {
+            if (AnaliseData.Count != 0)
+                AnaliseData.Clear();
+            for (int i = 0; i < Categs.Count; i++)
+            {
+                Analytics tmp = AnaliseOneCategory(Categs[i], start, end);
+                AnaliseData.Add(tmp);
+            }
+        }
+        private Analytics AnaliseOneCategory(string category, DateTime start, DateTime end)
+        {
+            int avgSum;
+            int amountSum = 0;
+            TimeSpan amountDays = end - start;
+            for (int i = 0; i < tranzactions.Count; i++)
+            {
+                if (tranzactions[i].CatName == category &&
+                    tranzactions[i].DateTranz.CompareTo(start) >= 0 &&
+                    tranzactions[i].DateTranz.CompareTo(end) <= 0)
+                {
+                    amountSum += tranzactions[i].Sum;
+                }
+            }
+            avgSum = amountSum / amountDays.Days;
+            return new Analytics(category, avgSum, amountSum, start, end);
         }
     }
     //добавить изменеине по дате начиная от года 
