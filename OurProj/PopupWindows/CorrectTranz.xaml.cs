@@ -93,5 +93,24 @@ namespace OurProj.PopupWindows
                 }
             }
         }
+
+        private void TextBoxSum_KeyDown(object sender, KeyEventArgs e)
+        {
+            int c = (Char)e.Key;
+            if (((Char)e.Key >= 34 && (Char)e.Key <= 43))
+            {
+                e.Handled = false;
+            }
+            else if (((Char)e.Key >= 74 && (Char)e.Key <= 83))
+            {
+                e.Handled = false;
+            }
+            else if ((Char)e.Key == 2)
+                e.Handled = false;
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

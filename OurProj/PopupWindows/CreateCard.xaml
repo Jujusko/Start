@@ -12,7 +12,7 @@
         <Button x:Name="ButtonAddCashBack" Content="Cashback" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="65" Click="ButtonAddCashBack_Click"/>
         <Button x:Name="ButtonOK" Content="Добавить" HorizontalAlignment="Left" Margin="40,230,0,0" VerticalAlignment="Top" Click="ButtonOK_Click"/>
         <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Margin="120,20,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBoxBalance" HorizontalAlignment="Left" Margin="120,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxBalance" HorizontalAlignment="Left" Margin="120,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewKeyDown="TextBoxBalance_PreviewKeyDown"/>
         <Button x:Name="ButtonAddCard" Content="Add Card" HorizontalAlignment="Left" Margin="150,110,0,0" VerticalAlignment="Top" Click="ButtonAddCard_Click"/>
 
     </Grid>

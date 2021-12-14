@@ -40,7 +40,10 @@ namespace OurProj.PopupWindows
             ErrorWindow err = new(_window);
 
             sum = Convert.ToInt32(TextBoxSum.Text);
-            dayOfBought = DatePickerBoughtDay.DisplayDate;
+            if (DatePickerBoughtDay.SelectedDate != null)
+                dayOfBought = (DateTime)DatePickerBoughtDay.SelectedDate;
+            else
+                dayOfBought = DateTime.Today;
             newTranz = new(dayOfBought, category, sum);
 
             if (curCard.ChangeBalanceMinus(sum) == -1)
@@ -50,6 +53,7 @@ namespace OurProj.PopupWindows
                 curCard.Tranzactions.Add(newTranz);
                 TryCashBack(curCard, newTranz);
                 Data.user.tranzactions.Add(newTranz);
+                _window.ChangeLabelInfo();
             }
 
             _window.LabelCardBalance.Content = curCard.Balance;
@@ -69,6 +73,24 @@ namespace OurProj.PopupWindows
                 }
             }
             return ;
+        }
+
+        private void TextBoxSum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (((Char)e.Key >= 34 && (Char)e.Key <= 43))
+            {
+                e.Handled = false;
+            }
+            else if (((Char)e.Key >= 74 && (Char)e.Key <= 83))
+            {
+                e.Handled = false;
+            }
+            else if ((Char)e.Key == 2)
+                e.Handled = false;
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

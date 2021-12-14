@@ -13,14 +13,16 @@ namespace Start
         public List<RealCard> Cards = new();
         public string UserName;
         public int Len;
-        public Categories bla = new();
         public List<string> Categs { get; set; }
         public List<Tranz> tranzactions { get; set; }
         public List<Analytics> AnaliseData { get; set; }
 
         public User(string userName)
         {
-            Categs = new();
+            string income = "income";
+            string unstaged = "unstaged";
+            string wage = "wage";
+            Categs = new(); Categs.Add(income); Categs.Add(unstaged); Categs.Add(wage);
             Len = 0;
             UserName = userName;
             tranzactions = new();
@@ -76,6 +78,7 @@ namespace Start
         {
             int avgSum;
             int amountSum = 0;
+            int k, j;
             TimeSpan amountDays = end - start;
             for (int i = 0; i < tranzactions.Count; i++)
             {

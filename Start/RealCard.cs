@@ -10,13 +10,12 @@ namespace Start
     {
         public override int Balance { get; set ; }
         public override string Name { get; set; }
-        public int Index { get; set; }
         public List<Tranz> Tranzactions { get; set; }
 
-        int CashBackProfit { get; set; }
+        public DateTime CashBackProfit { get; set; }
         public int AccumulatedCashback { get; set; }
         public List<CashBackByCategory> CashBacks { get; set; }
-
+        AllData Castle = AllData.GetInstance();
         public RealCard(int balance, string name)
         {
             Balance = balance;
@@ -65,12 +64,14 @@ namespace Start
         public void GetProfitFromCashBack()
         {
             DateTime today = DateTime.Now;
-            if (today.Day == CashBackProfit)
+            if (today == CashBackProfit)
             {
                 ChangeBalancePlus(AccumulatedCashback);
                 Tranz newTranz = new(today, "cashback", AccumulatedCashback);
                 AccumulatedCashback = 0;
                 Tranzactions.Add(newTranz);
+                Castle.user.tranzactions.Add(newTranz);
+                CashBackProfit.AddMonths(1);
             }
         }
         //TODO дописать окно, проверить все поля. КБПрофит будем получать из окна fillCBField, концептуально

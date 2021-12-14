@@ -53,7 +53,11 @@ namespace OurProj.PopupWindows
             RealCard newCard;
             Label card = new();
 
-            balance = Convert.ToInt32(TextBoxBalance.Text);
+            if (TextBoxBalance.Text == "" ||
+                TextBoxBalance.Text == null)
+                balance = 0;
+            else
+                balance = Convert.ToInt32(TextBoxBalance.Text);
             name = TextBoxName.Text;
             card.Content = name;
             newCard = new(balance, name);
@@ -61,7 +65,28 @@ namespace OurProj.PopupWindows
             AllInfo.user.Cards.Add(newCard);
 
             _window.ComboBoxCards.Items.Add(card);
+            ButtonOK.IsEnabled = true;
             ButtonAddCashBack.IsEnabled = true;
+            
+        }
+
+        private void TextBoxBalance_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            int c = (Char)e.Key;
+            if (((Char)e.Key >= 34 && (Char)e.Key <= 43))
+            {
+                e.Handled = false;
+            }
+            else if (((Char)e.Key >= 74 && (Char)e.Key <= 83))
+            {
+                e.Handled = false;
+            }
+            else if ((Char)e.Key == 2)
+                e.Handled = false;
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

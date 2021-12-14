@@ -33,7 +33,6 @@ namespace Start.Dinar.Categories
             int year;
             int numbCategory;
             CategoryInfo neededCat;
-            DateTime today = DateTime.Now;
             Tranzactions newTranz;
             int i;
 
@@ -51,34 +50,6 @@ namespace Start.Dinar.Categories
                     break;
             }
             neededCat.AddTranz(newTranz, i);
-            //CategoryInfo tmp = CurrentCategory[numbCategory];
-            //flag = 1;
-            //treatHead = tmp;
-            //while(tmp.Next != null)
-            //{
-            //    if (FrontOrBack(tmp.Next, newNode) == 0 && FrontOrBack(tmp, newNode) == 1)
-            //    {
-            //        newNode.Next = tmp.Next;
-            //        tmp.Next = newNode;
-            //        tmp.Next.Prev = tmp;
-            //        flag = 0;
-            //    }
-            //    tmp = tmp.Next;
-            //}
-            //if (flag == 1)
-            //{
-            //    if (FrontOrBack(tmp, newNode) == 0)
-            //    {
-            //        newNode.Next = CurrentCategory[numbCategory];
-            //        newNode.Next.Prev = newNode;
-            //        CurrentCategory[numbCategory] = newNode;
-            //    }
-            //    else
-            //    {
-            //        tmp.Next = newNode;
-            //        tmp.Next.Prev = tmp;
-            //    }
-            //}
             return 1;
         }
         private int CheckTranzPlace(Tranzactions toAdd, Tranzactions current)
@@ -238,48 +209,7 @@ namespace Start.Dinar.Categories
             }
             throw new Exception("Этого не должно произойти");
         }
-        public void DeleteTranzaction(string catName, int sum, string date, RealCard card)
-        {
-            AllData Garbage = AllData.GetInstance();
 
-            CategoryInfo tmp;
-            Tranzactions toDel = new Tranzactions(date, sum);
-            int i;
-
-            tmp = Garbage.user.bla.GetCategory(catName);
-            i = -1;
-            while (++i < tmp.Needed.Count)
-            {
-                if ((toDel.Date == tmp.Needed[i].Date) &&
-                    (toDel.Sum == tmp.Needed[i].Sum))
-                {
-                    card.Balance += sum;
-                    tmp.Delete(i);
-                }
-            }
-        }
-        public int ChangeTranzaction(string catName, int sum, string date, int prevSum, string prevDate, RealCard card)
-        {
-            AllData Garbage = AllData.GetInstance();
-            CategoryInfo tmp;
-            int i;
-            tmp = Garbage.user.bla.GetCategory(catName);
-            i = -1;
-            while (++i < tmp.Needed.Count)
-            {
-                if ((prevDate == tmp.Needed[i].Date) &&
-                    (prevSum== tmp.Needed[i].Sum))
-                {
-                    if (sum <= card.Balance + prevSum)
-                    {
-                        tmp.Needed[i].Date = date;
-                        tmp.Needed[i].Sum = sum;
-                        card.Balance = card.Balance + prevSum - sum;
-                        return 1;
-                    }
-                }
-            }
-            return 0;
-        }
+       
     }
 }

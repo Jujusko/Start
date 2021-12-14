@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="ButtonChangeTranz" Content="Изменить" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Click="ButtonChangeTranz_Click"/>
         <Button x:Name="ButtonDeleteTranz" Content="Удалить" HorizontalAlignment="Right" Margin="0,150,50,0" VerticalAlignment="Top" Click="ButtonDeleteTranz_Click"/>
-        <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="30,70,0,0" Height="25" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Margin="30,70,0,0" Height="25" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="TextBoxSum_KeyDown"/>
         <DatePicker x:Name="DatePickerDateOfBought" HorizontalAlignment="Right" Margin="250,70,30,0" VerticalAlignment="Top"/>
 
     </Grid>

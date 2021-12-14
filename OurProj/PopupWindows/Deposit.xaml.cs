@@ -11,27 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DinarWindow;
-using Project;
 
-namespace Project.UtilWindows
+namespace OurProj.PopupWindows
 {
     /// <summary>
-    /// Логика взаимодействия для DeclineTranz.xaml
+    /// Логика взаимодействия для Deposit.xaml
     /// </summary>
-    public partial class DeclineTranz : Window
+    public partial class Deposit : Window
     {
-        WindowWithTabs _window;
-        public DeclineTranz(WindowWithTabs sd)
+        public Deposit()
         {
-            _window = sd;
             InitializeComponent();
         }
 
-        private void ButtonOk_Click(object sender, RoutedEventArgs e)
+        private void TextBoxBalance_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _window.IsEnabled = true;
-            this.Close();
+
         }
     }
 }
