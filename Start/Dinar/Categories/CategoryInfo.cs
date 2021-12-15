@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Start.Dinar.Categories
 {
     public class CategoryInfo
     {
-        public  int Day { get; set; }
+        public int Day { get; set; }
         public int Mounth { get; set; }
         public int Year { get; set; }
 
@@ -36,7 +32,7 @@ namespace Start.Dinar.Categories
             Needed.Add(first);
             NameCategory = nameCat;
         }
-        public void AddTranz (int day, int mounth, int year, int sum)
+        public void AddTranz(int day, int mounth, int year, int sum)
         {
             Tranzactions newTranz = new(day, mounth, year, sum);
             Needed.Add(newTranz);

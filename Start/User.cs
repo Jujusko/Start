@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Start.Dinar.Categories;
-using Start;
 
 namespace Start
 {
@@ -23,7 +18,7 @@ namespace Start
             string income = "income";
             string unstaged = "unstaged";
             string deposit = "deposit";
-            Categs = new(); Categs.Add(income); Categs.Add(unstaged); Categs.Add(deposit);
+            Categs = new() { income, unstaged, deposit };
             Len = 0;
             UserName = userName;
             Tranzactions = new();
@@ -41,7 +36,7 @@ namespace Start
             int i;
 
             i = -1;
-            while(++i < Cards.Count)
+            while (++i < Cards.Count)
             {
                 if (Cards[i].Name == cardName)
                 {

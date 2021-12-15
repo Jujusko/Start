@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Start.Dinar.Categories;
 
 namespace Start.Dinar.Categories
 {
@@ -19,7 +14,7 @@ namespace Start.Dinar.Categories
         public CategoryInfo[] CurrentCategory { get; set; }
         public int Len { get; set; }
 
-        
+
         public Categories()
         {
             CurrentCategory = new CategoryInfo[20];
@@ -97,7 +92,7 @@ namespace Start.Dinar.Categories
         private int ChooseCategory(string category)
         {
             int i = 0;
-            while(i < Len)
+            while (i < Len)
             {
                 if (CurrentCategory[i].NameCategory == category)
                     return i;
@@ -145,7 +140,7 @@ namespace Start.Dinar.Categories
             {
                 return -1;
             }
-            while(i < CurrentCategory.Length)
+            while (i < CurrentCategory.Length)
             {
                 if (CurrentCategory[i] != null && CurrentCategory[i].NameCategory == categoryName)
                 {
@@ -186,9 +181,9 @@ namespace Start.Dinar.Categories
         {
             int i = 0;
             string s = "";
-            while(i <= Len)
+            while (i <= Len)
             {
-               s = s + CurrentCategory[i].NameCategory;
+                s = s + CurrentCategory[i].NameCategory;
                 i++;
             }
             return s;
@@ -210,6 +205,6 @@ namespace Start.Dinar.Categories
             throw new Exception("Этого не должно произойти");
         }
 
-       
+
     }
 }

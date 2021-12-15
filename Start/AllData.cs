@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Start;
-using Start.Dinar.Categories;
-
-namespace Start
+﻿namespace Start
 {
     public class AllData
     {

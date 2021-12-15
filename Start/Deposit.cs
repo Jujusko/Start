@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Start
 {
@@ -41,7 +37,7 @@ namespace Start
         {
             if (Active == true)
             {
-                if(day.Date == Profit.Date)
+                if (day.Date == Profit.Date)
                 {
                     PaymentAndProfitPlace.ChangeBalancePlus(Balance * Percent / 100);
                 }

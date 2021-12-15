@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OurProj.PopupWindows;
+using Start;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Start;
-using OurProj.PopupWindows;
 
 namespace OurProj
 {
@@ -128,7 +119,7 @@ namespace OurProj
                         Button tranz = new();
                         tranz.Content = curCard.Tranzactions[i].DateTranz + "\n" + curCard.Tranzactions[i].Sum + "\n";
                         if (curCard.Tranzactions[i].CashBack != 0)
-                            tranz.Content += curCard.Tranzactions[i].CashBack +"";
+                            tranz.Content += curCard.Tranzactions[i].CashBack + "";
                         tranz.Click += ForEveryTranzaction;
                         StacPanelTranzactions.Children.Add(tranz);
                         TextBoxTmp.Text += curCard.Tranzactions[i].DateTranz + "\n" + curCard.Tranzactions[i].Sum + "\n";
@@ -178,7 +169,7 @@ namespace OurProj
 
         private void ButtonMonthAnalyticks_Click(object sender, RoutedEventArgs e)
         {
-            
+
             DateTime end = DateTime.Today;
             DateTime start = DateTime.Today.AddMonths(-1);
             AllInfo.user.MakeAnalyse(start, end);
@@ -195,10 +186,10 @@ namespace OurProj
             LabelMainWBalance.Content = curCard.Balance;
             LabelCardBalance.Content = curCard.Balance;
             LabelMainWCasback.Content = curCard.AccumulatedCashback;
-            foreach(Tranz temp in curCard.Tranzactions)
+            foreach (Tranz temp in curCard.Tranzactions)
             {
                 if (temp.CatName != "income")
-                spendedMoney += temp.Sum;
+                    spendedMoney += temp.Sum;
             }
             LabelMainWTranzactions.Content = spendedMoney;
         }
@@ -312,7 +303,10 @@ namespace OurProj
                 MessageBox.Show("Not enough money ");
                 return;
             }
+            curDepo.Balance += newUp.Sum;
             curDepo.PaymentAndProfitPlace.Tranzactions.Add(newUp);
+            LabelDepoBalance.Content = curDepo.Balance;
+            ChangeLabelInfo();
         }
 
         private void TextBoxSumOfTranz_GotFocus(object sender, RoutedEventArgs e)

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Start;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Start;
 
 namespace OurProj.PopupWindows
 {
@@ -67,7 +58,7 @@ namespace OurProj.PopupWindows
             _window.ComboBoxCards.Items.Add(card);
             ButtonOK.IsEnabled = true;
             ButtonAddCashBack.IsEnabled = true;
-            
+
         }
 
         private void TextBoxBalance_PreviewKeyDown(object sender, KeyEventArgs e)

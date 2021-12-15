@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Start;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Start;
 
 namespace OurProj.PopupWindows
 {
@@ -33,16 +24,18 @@ namespace OurProj.PopupWindows
 
         private void FillComboBox()
         {
-            foreach(var temp in _win.ComboBoxCards.Items)
+            foreach (var temp in _win.ComboBoxCards.Items)
             {
                 if (temp is Label)
                 {
-                    Label card =new();
+                    Label card = new();
                     card.Content = ((Label)temp).Content;
                     ComboBoxCards.Items.Add(card);
                 }
             }
         }
+        //dict bool
+
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
             if (CheckData() == 1)

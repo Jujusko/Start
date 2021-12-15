@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Start
 {
-    public class RealCard:AbstractCard
+    public class RealCard : AbstractCard
     {
-        public override int Balance { get; set ; }
+        public override int Balance { get; set; }
         public override string Name { get; set; }
         public List<Tranz> Tranzactions { get; set; }
 
@@ -30,7 +27,7 @@ namespace Start
         {
             if (Balance < money)
                 return -1;
-            Balance -=money;
+            Balance -= money;
             return 1;
         }
 
@@ -54,7 +51,7 @@ namespace Start
         }
         public void AccumulateCashBack(Tranz tranzaction)
         {
-            for(int i = 0; i < CashBacks.Count; i++)
+            for (int i = 0; i < CashBacks.Count; i++)
             {
                 if (tranzaction.CatName == CashBacks[i].CatName)
                     AccumulatedCashback += tranzaction.Sum * CashBacks[i].Percent / 100;

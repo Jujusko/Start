@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Start
 {
     class Cashback : AbstractCard
     {
-        public override int Balance { get; set; }//accumulated cashback
-        public override string Name { get; set; }//catname
+        public override int Balance { get; set; }
+        public override string Name { get; set; }
         public double Percent { get; set; }
 
         RealCard CardWithCashBack { get; set; }
@@ -17,7 +14,7 @@ namespace Start
         public List<CashBackByCategory> CasbBacks { get; set; }
         AllData Data = AllData.GetInstance();
 
-        public Cashback (int percent, RealCard Card)
+        public Cashback(int percent, RealCard Card)
         {
             Balance = 0;
             CardWithCashBack = Card;
