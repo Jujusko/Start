@@ -13,17 +13,20 @@ namespace Start
         public DateTime Profit { get; set; }
         public DateTime CloseDate { get; set; }
         public int Percent { get; set; }
+        public bool Active { get; set; }
 
         public RealCard PaymentAndProfitPlace { get; set; }
 
 
-        public Deposit(int balance, string name, int amountMonths, int percent)
+        public Deposit(int balance, string name, int amountMonths, int percent, RealCard linkToCard)
         {
             Profit = DateTime.Today.AddMonths(1);
             CloseDate = DateTime.Today.AddMonths(amountMonths);
             Percent = percent;
             Balance = balance;
+            Active = true;
             Name = name;
+            PaymentAndProfitPlace = linkToCard;
         }
         public override int ChangeBalanceMinus(int money)
         {
@@ -36,19 +39,24 @@ namespace Start
         }
         public int GetProfit(DateTime day)
         {
-            if(day.Date == Profit.Date)
+            if (Active == true)
             {
-                PaymentAndProfitPlace.ChangeBalancePlus(Balance * Percent / 100);
+                if(day.Date == Profit.Date)
+                {
+                    PaymentAndProfitPlace.ChangeBalancePlus(Balance * Percent / 100);
+                }
+                if (CloseDeposit(0, day) == 1)
+                    return 1;
             }
-            if (CloseDeposit(0, day) == 1)
-                return 1;
             return 0;
         }
         public int CloseDeposit(int flag, DateTime day)
         {
-            if (flag == 1 || day.Date == CloseDate)
+            if ((flag == 1 || day.Date == CloseDate)
+                && Active == true)
             {
                 PaymentAndProfitPlace.ChangeBalanceMinus(Balance);
+                Active = false;
                 return 1;
             }
             else

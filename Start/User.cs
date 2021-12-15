@@ -11,21 +11,22 @@ namespace Start
     public class User
     {
         public List<RealCard> Cards = new();
+        public List<Deposit> Depos = new();
         public string UserName;
         public int Len;
         public List<string> Categs { get; set; }
-        public List<Tranz> tranzactions { get; set; }
+        public List<Tranz> Tranzactions { get; set; }
         public List<Analytics> AnaliseData { get; set; }
 
         public User(string userName)
         {
             string income = "income";
             string unstaged = "unstaged";
-            string wage = "wage";
-            Categs = new(); Categs.Add(income); Categs.Add(unstaged); Categs.Add(wage);
+            string deposit = "deposit";
+            Categs = new(); Categs.Add(income); Categs.Add(unstaged); Categs.Add(deposit);
             Len = 0;
             UserName = userName;
-            tranzactions = new();
+            Tranzactions = new();
             AnaliseData = new();
         }
 
@@ -64,6 +65,15 @@ namespace Start
             }
             throw new Exception("Этого никогда не произойдет");
         }
+        public Deposit GetActualDeposit(string depoName)
+        {
+            for (int i = 0; i < Depos.Count; i++)
+            {
+                if (Depos[i].Name == depoName)
+                    return Depos[i];
+            }
+            throw new Exception("Этого никогда не произойдет");
+        }
         public void MakeAnalyse(DateTime start, DateTime end)
         {
             if (AnaliseData.Count != 0)
@@ -80,13 +90,13 @@ namespace Start
             int amountSum = 0;
             int k, j;
             TimeSpan amountDays = end - start;
-            for (int i = 0; i < tranzactions.Count; i++)
+            for (int i = 0; i < Tranzactions.Count; i++)
             {
-                if (tranzactions[i].CatName == category &&
-                    tranzactions[i].DateTranz.CompareTo(start) >= 0 &&
-                    tranzactions[i].DateTranz.CompareTo(end) <= 0)
+                if (Tranzactions[i].CatName == category &&
+                    Tranzactions[i].DateTranz.CompareTo(start) >= 0 &&
+                    Tranzactions[i].DateTranz.CompareTo(end) <= 0)
                 {
-                    amountSum += tranzactions[i].Sum;
+                    amountSum += Tranzactions[i].Sum;
                 }
             }
             avgSum = amountSum / amountDays.Days;

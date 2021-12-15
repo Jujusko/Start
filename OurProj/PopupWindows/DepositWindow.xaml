@@ -1,0 +1,18 @@
+﻿<Window x:Class="OurProj.PopupWindows.DepositWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OurProj.PopupWindows"
+        mc:Ignorable="d"
+        Title="DepositWindow" Height="300" Width="200">
+    <Grid Background="#FFF7A9A9">
+        <TextBox x:Name="TextBoxDepoName" HorizontalAlignment="Left" Margin="37,25,0,0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="TextBoxPercent" HorizontalAlignment="Left" Margin="37,48,0,0" Text="percent" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="TextBoxDigitsOnly" GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="TextBoxAmountMonths" HorizontalAlignment="Left" Margin="37,71,0,0" Text="Months" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="TextBoxDigitsOnly" GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="TextBoxStartBalance" HorizontalAlignment="Left" Margin="37,94,0,0" Text="Start balance" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="TextBoxDigitsOnly" GotFocus="TextBox_GotFocus"/>
+        <Button x:Name="ButtonAccept" Content="Accept" HorizontalAlignment="Left" Margin="37,191,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click"/>
+        <ComboBox x:Name="ComboBoxCards" HorizontalAlignment="Left" Margin="37,142,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxCards_SelectionChanged"/>
+
+    </Grid>
+</Window>

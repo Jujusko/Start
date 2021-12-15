@@ -70,7 +70,7 @@ namespace Start
                 Tranz newTranz = new(today, "cashback", AccumulatedCashback);
                 AccumulatedCashback = 0;
                 Tranzactions.Add(newTranz);
-                Castle.user.tranzactions.Add(newTranz);
+                Castle.user.Tranzactions.Add(newTranz);
                 CashBackProfit.AddMonths(1);
             }
         }

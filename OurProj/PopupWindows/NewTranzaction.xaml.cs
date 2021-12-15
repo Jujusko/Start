@@ -52,7 +52,7 @@ namespace OurProj.PopupWindows
             {
                 curCard.Tranzactions.Add(newTranz);
                 TryCashBack(curCard, newTranz);
-                Data.user.tranzactions.Add(newTranz);
+                Data.user.Tranzactions.Add(newTranz);
                 _window.ChangeLabelInfo();
             }
 

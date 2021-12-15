@@ -28,6 +28,7 @@ namespace OurProj
             InitializeComponent();
             ButtonInComboBoxForCards();
             ButtonInComboBoxForCategs();
+            ButtonInComboBoxForDepo();
             TabItemTranzactions.IsEnabled = false;
             ListViewAnalyticks.IsEnabled = false;
         }
@@ -64,6 +65,23 @@ namespace OurProj
             this.IsEnabled = false;
         }
         #endregion
+        #region AddDeposit
+        private void ButtonInComboBoxForDepo()
+        {
+            Button add = new();
+            add.Content = "New";
+            add.Click += ButtonAddDepo;
+            ComboBoxDeposit.Items.Add(add);
+        }
+
+        private void ButtonAddDepo(object sender, RoutedEventArgs e)
+        {
+            DepositWindow toCreate = new(this);
+            toCreate.Show();
+            this.IsEnabled = false;
+            //сменить видимость одного на другое
+        }
+        #endregion
 
         private void ButtonSelectUser_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +93,7 @@ namespace OurProj
         private void ComboBoxCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string tmp;
-            if (ComboBoxCards.SelectedItem is Label)
+            if (CBoxHelper(sender) == 1)
             {
                 tmp = Convert.ToString(((Label)ComboBoxCards.SelectedItem).Content);
                 RealCard card = AllInfo.user.GetActualCard(tmp);
@@ -87,6 +105,12 @@ namespace OurProj
             }
         }
 
+        private int CBoxHelper(object sender)
+        {
+            if (((ComboBox)sender).SelectedItem is Label)
+                return 1;
+            return 0;
+        }
 
         public void ButtonTmp_Click(object sender, RoutedEventArgs e)
         {
@@ -218,7 +242,7 @@ namespace OurProj
             if (RadioButtonIncome.IsChecked == true)
             {
                 newTranz = new(datec, "income", Convert.ToInt32(TextBoxSumOfTranz.Text));
-                AllInfo.user.tranzactions.Add(newTranz);
+                AllInfo.user.Tranzactions.Add(newTranz);
                 curCard.Tranzactions.Add(newTranz);
                 curCard.ChangeBalancePlus(newTranz.Sum);
             }
@@ -229,7 +253,7 @@ namespace OurProj
                     MessageBox.Show("Error. Not enough money");
                 else
                 {
-                    AllInfo.user.tranzactions.Add(newTranz);
+                    AllInfo.user.Tranzactions.Add(newTranz);
                     curCard.Tranzactions.Add(newTranz);
                 }
             }
@@ -251,6 +275,49 @@ namespace OurProj
             {
                 e.Handled = true;
             }
+        }
+
+        private void ComboBoxDeposit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CBoxHelper(sender) == 1)
+            {
+                Deposit curDepo = AllInfo.user.GetActualDeposit(Convert.ToString(
+                    ((Label)ComboBoxDeposit.SelectedItem).Content));
+                LabelCloseDay.Content = curDepo.CloseDate;
+                LabelDepositName.Content = curDepo.Name;
+                LabelProfitDay.Content = curDepo.Profit.Date;
+                LabelDepoBalance.Content = curDepo.Balance;
+            }
+        }
+
+        private void ButtonFOrcedClose_Click(object sender, RoutedEventArgs e)
+        {
+            Deposit curDepo = AllInfo.user.GetActualDeposit(Convert.ToString(
+                    ((Label)ComboBoxDeposit.SelectedItem).Content));
+            curDepo.CloseDeposit(1, DateTime.Now);
+        }
+
+        private void ButtonVisibleFieldUpDepo_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonAcceptDepo.Visibility = Visibility.Visible;
+            TextBoxSummToUp.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonAcceptDepo_Click(object sender, RoutedEventArgs e)
+        {
+            Tranz newUp = new(DateTime.Today, "deposit", Convert.ToInt32(TextBoxSummToUp.Text));
+            Deposit curDepo = AllInfo.user.GetActualDeposit(Convert.ToString(LabelDepositName.Content));
+            if (curDepo.PaymentAndProfitPlace.ChangeBalanceMinus(Convert.ToInt32(TextBoxSummToUp.Text)) == -1)
+            {
+                MessageBox.Show("Not enough money ");
+                return;
+            }
+            curDepo.PaymentAndProfitPlace.Tranzactions.Add(newUp);
+        }
+
+        private void TextBoxSumOfTranz_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxSumOfTranz.Text = "";
         }
     }
 }
